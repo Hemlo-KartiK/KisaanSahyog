@@ -1,0 +1,912 @@
+<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-container":"#ffd385","inverse-primary":"#95d693","surface-dim":"#dddad2","on-primary":"#ffffff","on-primary-fixed":"#002106","on-secondary-fixed-variant":"#653d22","inverse-surface":"#31302b","surface-container":"#f1ede6","tertiary-fixed-dim":"#fabc3e","secondary":"#805437","surface-container-highest":"#e6e2da","secondary-fixed-dim":"#f4ba96","on-primary-container":"#a7e9a5","surface-bright":"#fdf9f1","error":"#ba1a1a","on-surface-variant":"#41493f","surface":"#fdf9f1","on-error-container":"#93000a","on-error":"#ffffff","on-secondary":"#ffffff","surface-container-low":"#f7f3eb","secondary-container":"#fec29e","on-secondary-container":"#794e31","on-tertiary-fixed-variant":"#5e4200","primary-fixed":"#b0f3ad","surface-container-high":"#ece8e0","primary-container":"#2e6b34","secondary-fixed":"#ffdbc7","tertiary-fixed":"#ffdea8","surface-container-lowest":"#ffffff","tertiary":"#5e4200","on-background":"#1c1c17","outline-variant":"#c0c9bc","tertiary-container":"#7d5800","background":"#fdf9f1","surface-variant":"#e6e2da","on-tertiary-fixed":"#271900","error-container":"#ffdad6","outline":"#71796e","surface-tint":"#2e6b34","on-primary-fixed-variant":"#12521e","on-surface":"#1c1c17","on-tertiary":"#ffffff","primary":"#12521e","inverse-on-surface":"#f4f0e8","primary-fixed-dim":"#95d693","on-secondary-fixed":"#311300"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-md":"1rem","space-sm":"0.5rem","space-2xl":"3rem","gutter-desktop":"1.5rem","margin":"1rem","space-xs":"0.25rem","gutter":"1rem","space-xl":"2rem","space-lg":"1.5rem","margin-desktop":"2.5rem"},fontFamily:{"headline-lg-mobile":["\"Source Serif 4\""],"body-lg":["Noto Sans"],"display-mobile":["\"Source Serif 4\""],"title-lg":["Noto Sans"],"label-lg":["Noto Sans"],"headline-md":["\"Source Serif 4\""],"body-md":["Noto Sans"],"display":["\"Source Serif 4\""],"label-md":["Noto Sans"],"title-md":["Noto Sans"],"headline-lg":["\"Source Serif 4\""],"label-sm":["Noto Sans"]},fontSize:{"headline-lg-mobile":["1.375rem",{"lineHeight":"1.875rem","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","fontWeight":"400"}],"display-mobile":["1.75rem",{"lineHeight":"2.25rem","fontWeight":"700"}],"title-lg":["1.125rem",{"lineHeight":"1.625rem","fontWeight":"600"}],"label-lg":["0.9375rem",{"lineHeight":"1.375rem","fontWeight":"600"}],"headline-md":["1.25rem",{"lineHeight":"1.75rem","fontWeight":"600"}],"body-md":["1rem",{"lineHeight":"1.5rem","fontWeight":"400"}],"display":["2.25rem",{"lineHeight":"2.75rem","fontWeight":"700"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"500"}],"title-md":["1rem",{"lineHeight":"1.5rem","fontWeight":"600"}],"headline-lg":["1.75rem",{"lineHeight":"2.25rem","fontWeight":"600"}],"label-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"500"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><div class="fixed top-0 left-0 right-0 h-9 z-50 bg-inverse-surface text-inverse-on-surface px-4 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.06)]"><div class="flex items-center gap-3"><span class="flex items-center gap-1.5 text-label-sm font-label-sm text-secondary-fixed"><span class="material-symbols-outlined text-[15px]">devices</span>मोड स्विच / App Switcher:</span><a class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container-highest/20 text-inverse-on-surface hover:bg-surface-container-highest/40 transition-colors flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[13px]">smartphone</span>किसान मोबाइल ऐप (Farmer View)</a><span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-container text-on-primary-container font-medium flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">desktop_windows</span>सक्रिय: खरीदार वेब पोर्टल (Buyer Portal)</span></div><div class="flex items-center gap-3"><div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-tertiary-container/40 text-on-tertiary-container text-label-sm font-label-sm"><span class="material-symbols-outlined text-[14px]">gavel</span><span class="">सिमुलेशन टूलकिट (Judge Toolkit Active)</span></div><span class="h-3.5 w-px bg-outline-variant/40"></span><span class="text-label-sm font-label-sm text-surface-dim flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-inverse-primary animate-pulse"></span>लाइव मंडी डेटा सर्वर</span></div></div><header class="fixed top-9 left-0 right-0 h-16 z-40 bg-surface/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-full px-6 flex items-center justify-between gap-4"><div class="flex items-center gap-4 flex-shrink-0"><div class="flex items-center gap-2"><span class="text-2xl">🤝</span><div class="leading-none"><div class="flex items-center gap-1.5"><span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">KisaanSahyog</span><span class="font-title-md text-title-md font-bold text-secondary">खरीदार मंच</span></div><span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">B2B Agri-Trade Direct Desk</span></div></div><div class="hidden xl:flex items-center gap-1 px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm"><span class="material-symbols-outlined text-[15px]">verified</span><span class="">0% कमीशन डायरेक्ट ट्रेड</span></div></div><div class="flex-1 max-w-xl mx-2"><div class="relative flex items-center w-full h-10 px-3 rounded bg-surface-container-low shadow-[0_1px_4px_rgba(43,29,18,0.06)]"><span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span><input class="w-full bg-transparent border-none outline-none font-body-md text-body-md text-on-surface placeholder:text-outline" placeholder="फसल, मंडी, या ग्रेड खोजें... e.g. Sharbati Wheat, Chana (बोल कर या लिख कर)" type="text"><button class="flex items-center justify-center w-7 h-7 rounded-full bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors ml-2 shadow-[0_2px_0px_#12521e]" title="Bol kar khojein (Voice Search)" type="button"><span class="material-symbols-outlined text-[16px]">mic</span></button></div></div><div class="flex items-center gap-3 flex-shrink-0"><button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-sm text-label-sm" type="button"><span class="material-symbols-outlined text-[15px] text-secondary">translate</span><span class="font-bold text-primary">हिन्दी</span><span class="">/ ENG</span></button><button class="relative p-2 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-2 pl-2"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden lg:block leading-none text-left"><div class="font-label-md text-label-md font-bold text-on-surface">Agarwal Flour Mills</div><div class="flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant"><span class="text-primary font-semibold">कानपुर</span><span class="">•</span><span class="text-primary">GSTIN OK</span></div></div></div></div></div></header><aside class="fixed left-0 top-[6.25rem] bottom-0 w-64 bg-surface-container-low z-30 flex flex-col justify-between py-4 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-3 px-3"><div class="px-3 pb-2"><div class="font-label-sm text-label-sm uppercase tracking-wider text-outline">ट्रेड वर्कस्पेस / Buyer Workspace</div></div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded shadow-[0_2px_0px_#12521e]"><a class="flex items-center gap-3 px-3.5 py-2.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-title-md text-title-md" data-path="market" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span><span class="">बाज़ार (Market)</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-title-md text-title-md" data-path="orders" href="#"><span class="material-symbols-outlined text-[20px]">assignment</span><span class="">मांग (Orders / Req.)</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-title-md text-title-md" data-path="deals" href="#"><span class="material-symbols-outlined text-[20px]">handshake</span><span class="">सौदे (Offers / Deals)</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-title-md text-title-md" data-path="saved-lots" href="#"><span class="material-symbols-outlined text-[20px]">bookmark</span><span class="">सेव (Saved Lots)</span></a><a aria-current="page" class="flex items-center gap-3 px-3.5 py-2.5 transition-all bg-primary-container text-on-primary-container font-bold rounded shadow-[0_2px_0px_#12521e]" data-path="ledger-and-profile" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="">खाता (Ledger &amp; KYC)</span></a></nav></div><div class="px-3"><div class="p-3.5 rounded bg-surface-container shadow-[0_2px_4px_rgba(43,29,18,0.06)]"><div class="flex items-center gap-2 mb-1.5 text-primary font-title-md text-title-md font-bold"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="">सत्यापित खरीद गारंटी</span></div><p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed mb-2.5">प्रत्येक लॉट NPK व नमी रिपोर्ट सहित डिजिटल वेइंग स्लिप के साथ एस्क्रो सुरक्षा में लॉक रहता है।</p><div class="flex items-center justify-between text-label-sm font-label-sm text-secondary font-semibold"><span class="">विश्वास सुरक्षा निधि</span><span class="px-1.5 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed">₹50L Escrow</span></div></div></div></aside><div class="pl-64"><main class="relative pt-[6.25rem] min-h-screen bg-surface px-6 pb-12"><div class="flex flex-col w-full">
+<!-- Top Quick Actions / Ledger Date Range Header -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-container text-on-primary-container uppercase tracking-wider font-semibold">
+          डिजिटल खाता बही • FY 2024-25
+        </span>
+<span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span>
+          ICICI नोडल एस्क्रो सिंक: सक्रिय
+        </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">खाता, एस्क्रो व व्यावसायिक प्रोफ़ाइल</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">डायरेक्ट किसान भुगतान विवरण, डिजिटल अनुबंध व लीगल परमिट रिपोजिटरी</p>
+</div>
+<!-- Right Utility Buttons -->
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span class="">चालू रबी सीज़न (Oct - Mar)</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-md text-label-md shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span class="">CA ऑडिट एक्सेल (.XLSX)</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2.5 rounded bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-all font-label-lg text-label-lg shadow-md active:translate-y-0.5" onclick="showFundModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">add_card</span>
+<span class="">एस्क्रो में फंड जोड़ें (+₹)</span>
+</button>
+</div>
+</div>
+<!-- Primary Business Entity & Escrow Vault Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm mb-6 relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-48 h-48 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-center">
+<!-- Company Branding & Reg Data (7 Cols) -->
+<div class="xl:col-span-7 flex flex-col md:flex-row items-start md:items-center gap-5">
+<div class="relative w-20 h-20 rounded-xl bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-4xl">factory</span>
+<span class="absolute -bottom-1 -right-1 bg-primary text-on-primary rounded-full p-0.5">
+<span class="material-symbols-outlined text-[16px] block">verified</span>
+</span>
+</div>
+<div class="space-y-2">
+<div class="flex flex-wrap items-center gap-2">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Agarwal Flour &amp; Oil Mills Pvt. Ltd.</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+<span class="">e-KYC पूर्ण (Verified)</span>
+</span>
+</div>
+<div class="flex items-center gap-2 text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+<span class="font-semibold text-on-surface">कानपुर हब (Kanpur Central Hub)</span>
+<span class="">•</span>
+<span class="">उत्तर प्रदेश मंडी बोर्ड संबद्ध #UP-KNP-8821</span>
+</div>
+<!-- Regulatory Credentials -->
+<div class="flex flex-wrap items-center gap-3 pt-1">
+<span class="px-2.5 py-1 rounded bg-surface-container text-label-sm font-label-sm font-mono text-on-surface">
+<strong class="text-secondary font-sans">GSTIN:</strong> 09AAACA1234F1Z5
+            </span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-label-sm font-label-sm font-mono text-on-surface">
+<strong class="text-secondary font-sans">FSSAI:</strong> 10018051002341
+            </span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-label-sm font-label-sm font-mono text-on-surface">
+<strong class="text-secondary font-sans">eNAM ID:</strong> UP-KAN-AGR99
+            </span>
+</div>
+</div>
+</div>
+<!-- Escrow Wallet Ledger Balance Widget (5 Cols) -->
+<div class="xl:col-span-5 bg-surface-container-low rounded-lg p-5 shadow-inner">
+<div class="flex items-start justify-between mb-3">
+<div>
+<div class="flex items-center gap-1.5 text-label-sm font-label-sm text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-primary text-[18px]">account_balance</span>
+<span class="">सुरक्षित एस्क्रो वॉलेट बैलेंस (Escrow Balance)</span>
+</div>
+<div class="font-display text-display text-primary font-bold mt-1 tracking-tight">
+              ₹14,80,000<span class="text-title-md font-title-md text-on-surface-variant font-normal">.00</span>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span> 100% बीमित
+          </span>
+</div>
+<div class="space-y-1.5 text-label-sm font-label-sm">
+<div class="flex justify-between text-on-surface-variant">
+<span class="">रक्षित खाता (Partner Bank):</span>
+<span class="font-semibold text-on-surface">ICICI Nodal Escrow A/c **4928</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span class="">गेट पर लंबित लॉट भुगतान (Earmarked for Gate arrivals):</span>
+<span class="font-semibold text-secondary">₹4,25,000 (3 लॉट)</span>
+</div>
+</div>
+<div class="mt-3.5 pt-3 border-t border-surface-container flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">autorenew</span>
+            स्वचालित आरटीजीएस (Auto-sweep on gate slip)
+          </span>
+<button class="text-label-sm font-label-sm text-primary hover:underline font-bold" type="button">खाता विवरण →</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Key Metric Performance Cards (4 Grid Bento) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">कुल व्यापार मात्रा (Trade Volume)</span>
+<span class="p-2 rounded bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[20px]">scale</span>
+</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">1,420 <span class="font-title-md text-title-md font-normal text-on-surface-variant">क्विंटल</span></div>
+<p class="font-label-sm text-label-sm text-primary font-medium mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span class="">+18.4% पिछले रबी सीज़न से अधिक</span>
+</p>
+</div>
+<div class="mt-3 pt-2 text-label-sm font-label-sm text-on-surface-variant">गेहूं (शरबती व 1544), चना व सरसों</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">सीधे किसान भुगतान (Direct Payouts)</span>
+<span class="p-2 rounded bg-surface-container text-secondary">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">₹34.80 <span class="font-title-md text-title-md font-normal text-on-surface-variant">लाख</span></div>
+<p class="font-label-sm text-label-sm text-primary font-medium mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="">औसत भुगतान समय: 42 मिनट (गेट पास उपरांत)</span>
+</p>
+</div>
+<div class="mt-3 pt-2 text-label-sm font-label-sm text-on-surface-variant">शून्य डिफॉल्ट या भुगतान अटकाव</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">दलाली बचत (Brokerage Saved)</span>
+<span class="p-2 rounded bg-secondary-fixed text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-primary">₹69,600</div>
+<p class="font-label-sm text-label-sm text-secondary font-medium mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">price_check</span>
+<span class="">2% मंडी आढ़त दलाली = 100% बचत</span>
+</p>
+</div>
+<div class="mt-3 pt-2 text-label-sm font-label-sm text-on-surface-variant">डायरेक्ट किसान-मिल ट्रेड मॉडल</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">सत्यापित किसान भागीदार (Network)</span>
+<span class="p-2 rounded bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[20px]">diversity_3</span>
+</span>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">42 <span class="font-title-md text-title-md font-normal text-on-surface-variant">उत्पादक</span></div>
+<p class="font-label-sm text-label-sm text-primary font-medium mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pin_drop</span>
+<span class="">4 राज्य: UP, MP, RJ, HR</span>
+</p>
+</div>
+<div class="mt-3 pt-2 text-label-sm font-label-sm text-on-surface-variant">7 पंजीकृत FPO समूह शामिल</div>
+</div>
+</div>
+<!-- Central Tabbed Workspace Section -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-8">
+<!-- Tab Navigation Bar -->
+<div class="flex flex-wrap items-center justify-between px-6 pt-4 border-b border-surface-container-high bg-surface-container-low">
+<div class="flex items-center gap-2 overflow-x-auto">
+<button class="tab-btn flex items-center gap-2 px-4 py-3 rounded-t-lg font-title-md text-title-md font-bold transition-all bg-surface-container-lowest text-primary shadow-sm -mb-px" id="btn-tab-ledger" onclick="switchTab('tab-ledger')" type="button">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span class="">लेन-देन एवं लेजर (Trading Ledger)</span>
+</button>
+<button class="tab-btn flex items-center gap-2 px-4 py-3 rounded-t-lg font-title-md text-title-md font-medium text-on-surface-variant hover:text-on-surface transition-all" id="btn-tab-escrow" onclick="switchTab('tab-escrow')" type="button">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span class="">एस्क्रो फंड प्रबंधन (Escrow Control)</span>
+</button>
+<button class="tab-btn flex items-center gap-2 px-4 py-3 rounded-t-lg font-title-md text-title-md font-medium text-on-surface-variant hover:text-on-surface transition-all" id="btn-tab-kyc" onclick="switchTab('tab-kyc')" type="button">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span class="">दस्तावेज़ एवं लाइसेंस (Mandi &amp; eNAM)</span>
+</button>
+<button class="tab-btn flex items-center gap-2 px-4 py-3 rounded-t-lg font-title-md text-title-md font-medium text-on-surface-variant hover:text-on-surface transition-all" id="btn-tab-farmers" onclick="switchTab('tab-farmers')" type="button">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span class="">पसंदीदा किसान एवं FPO (Saved Network)</span>
+</button>
+</div>
+<div class="pb-3 pt-2">
+<span class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">security</span>
+          प्रत्येक प्रविष्टि ब्लॉकचेन हैश द्वारा सुरक्षित
+        </span>
+</div>
+</div>
+<!-- TAB 1: Trading Ledger & Escrow Statements -->
+<div class="tab-content block p-6" id="tab-ledger">
+<!-- Filter Bar above Table -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<div class="flex items-center px-3 py-1.5 rounded bg-surface-container text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] mr-2 text-outline">filter_alt</span>
+<select class="bg-transparent border-none outline-none text-on-surface font-medium cursor-pointer">
+<option>सभी फसलें (All Crops)</option>
+<option>शरबती गेहूं (Sharbati)</option>
+<option>चना (Gram / Chana)</option>
+<option>सरसों (Mustard Seed)</option>
+</select>
+</div>
+<div class="flex items-center px-3 py-1.5 rounded bg-surface-container text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] mr-2 text-outline">paid</span>
+<select class="bg-transparent border-none outline-none text-on-surface font-medium cursor-pointer">
+<option>भुगतान स्थिति: सभी (All Status)</option>
+<option>निपटाया गया (Settled / Direct UPI)</option>
+<option>एस्क्रो में आरक्षित (Escrow Locked)</option>
+<option>जांच प्रक्रियाधीन (Under QC)</option>
+</select>
+</div>
+<button class="px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">refresh</span> रीसेट
+          </button>
+</div>
+<div class="text-label-md font-label-md text-on-surface-variant">
+          कुल प्रविष्टियां: <strong class="text-on-surface">58 सफल सौदे</strong> | प्रदर्शित: 5 नवीनतम
+        </div>
+</div>
+<!-- Ledger Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface font-title-md text-title-md">
+<th class="py-3.5 px-4 font-semibold">तारीख व सौदा ID</th>
+<th class="py-3.5 px-4 font-semibold">किसान / FPO विवरण</th>
+<th class="py-3.5 px-4 font-semibold">फसल व किस्म</th>
+<th class="py-3.5 px-4 font-semibold text-right">मात्रा</th>
+<th class="py-3.5 px-4 font-semibold text-right">दर (₹/क्विंटल)</th>
+<th class="py-3.5 px-4 font-semibold text-right">कुल भुगतान</th>
+<th class="py-3.5 px-4 font-semibold text-center">भुगतान मोड व स्थिति</th>
+<th class="py-3.5 px-4 font-semibold">वेब्रिज पर्ची #</th>
+<th class="py-3.5 px-4 font-semibold text-center">दस्तावेज़</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-body-md font-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">24 Mar 2025</div>
+<div class="text-label-sm font-label-sm text-outline font-mono">TXN-UP-88412</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">रमेश कुमार पटेल</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">location_on</span>
+<span class="">सीतापुर, UP</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container text-label-sm font-label-sm font-semibold">
+                  शरबती गेहूं (C-306)
+                </span>
+<div class="text-label-sm font-label-sm text-outline">नमी: 10.8% | ग्रेड: A+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-semibold">
+                85.00 Q
+              </td>
+<td class="py-3.5 px-4 text-right font-mono">
+                ₹3,150
+              </td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-primary font-mono">₹2,67,750</div>
+<div class="text-label-sm font-label-sm text-primary">0% मंडी शुल्क</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="">Escrow UPI Settled</span>
+</span>
+<div class="text-label-sm font-label-sm text-outline mt-0.5">ICICI RRN: 5082109</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm text-on-surface-variant">
+<span class="hover:text-primary cursor-pointer underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">scale</span>
+                  WB-KNP-4491
+                </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="p-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" title="Download GST e-Way Bill &amp; Invoice" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">22 Mar 2025</div>
+<div class="text-label-sm font-label-sm text-outline font-mono">TXN-MP-90114</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">मालवा एग्रो कृषक उत्पादक (FPO)</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">location_on</span>
+<span class="">उज्जैन, MP</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container text-label-sm font-label-sm font-semibold">
+                  देसी चना (विशाल)
+                </span>
+<div class="text-label-sm font-label-sm text-outline">नमी: 9.5% | बोल्ड दाना</div>
+</td>
+<td class="py-3.5 px-4 text-right font-semibold">
+                210.00 Q
+              </td>
+<td class="py-3.5 px-4 text-right font-mono">
+                ₹5,820
+              </td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-primary font-mono">₹12,22,200</div>
+<div class="text-label-sm font-label-sm text-primary">सीधा खाता अंतरण</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="">Escrow NEFT Payout</span>
+</span>
+<div class="text-label-sm font-label-sm text-outline mt-0.5">UTR: ICICR520240322</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm text-on-surface-variant">
+<span class="hover:text-primary cursor-pointer underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">scale</span>
+                  WB-KNP-4480
+                </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="p-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" title="Download Tax Invoice" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">19 Mar 2025</div>
+<div class="text-label-sm font-label-sm text-outline font-mono">TXN-RJ-76120</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">सुरेश चोइथराम पटेल</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">location_on</span>
+<span class="">अलवर, Rajasthan</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container text-label-sm font-label-sm font-semibold">
+                  काली सरसों (Mustard 42% Oil)
+                </span>
+<div class="text-label-sm font-label-sm text-outline">तेल तत्व: 42.4% प्रमाणित</div>
+</td>
+<td class="py-3.5 px-4 text-right font-semibold">
+                120.00 Q
+              </td>
+<td class="py-3.5 px-4 text-right font-mono">
+                ₹5,400
+              </td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-primary font-mono">₹6,48,000</div>
+<div class="text-label-sm font-label-sm text-primary">एस्क्रो प्रोटेक्टेड</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="">Escrow Direct RTGS</span>
+</span>
+<div class="text-label-sm font-label-sm text-outline mt-0.5">UTR: ICICR520240319</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm text-on-surface-variant">
+<span class="hover:text-primary cursor-pointer underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">scale</span>
+                  WB-KNP-4462
+                </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="p-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" title="Download Tax Invoice" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 (In transit/Escrow Hold) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-secondary-fixed/20">
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">25 Mar 2025</div>
+<div class="text-label-sm font-label-sm text-outline font-mono">TXN-UP-88509</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">बलविंदर सिंह गिल</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">location_on</span>
+<span class="">लखीमपुर खीरी, UP</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container text-label-sm font-label-sm font-semibold">
+                  गेहूं (HD-2967)
+                </span>
+<div class="text-label-sm font-label-sm text-outline">ट्रक रास्ते में (GPS Live)</div>
+</td>
+<td class="py-3.5 px-4 text-right font-semibold">
+                160.00 Q
+              </td>
+<td class="py-3.5 px-4 text-right font-mono">
+                ₹2,450
+              </td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-secondary font-mono">₹3,92,000</div>
+<div class="text-label-sm font-label-sm text-secondary">फंड लॉक (Vault)</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+<span class="">एस्क्रो में लॉक (In Gate Transit)</span>
+</span>
+<div class="text-label-sm font-label-sm text-outline mt-0.5">गेट एंट्री पर ऑटो-रिलीज़</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm text-outline">
+                पर्ची प्रतीक्षित
+              </td>
+<td class="py-3.5 px-4 text-center">
+<button class="p-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" title="View Digital Contract" type="button">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">15 Mar 2025</div>
+<div class="text-label-sm font-label-sm text-outline font-mono">TXN-MP-89731</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">दीनदयाल पाटीदार</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">location_on</span>
+<span class="">धार, MP</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container text-label-sm font-label-sm font-semibold">
+                  सोयाबीन (JS-9560)
+                </span>
+<div class="text-label-sm font-label-sm text-outline">ग्रेड A | तेल: 19.8%</div>
+</td>
+<td class="py-3.5 px-4 text-right font-semibold">
+                140.00 Q
+              </td>
+<td class="py-3.5 px-4 text-right font-mono">
+                ₹4,720
+              </td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-primary font-mono">₹6,60,800</div>
+<div class="text-label-sm font-label-sm text-primary">0% मंडी दलाली</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="">Escrow Direct IMPS</span>
+</span>
+<div class="text-label-sm font-label-sm text-outline mt-0.5">ICICI Ref: 4401928</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm text-on-surface-variant">
+<span class="hover:text-primary cursor-pointer underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">scale</span>
+                  WB-KNP-4420
+                </span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<button class="p-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" title="Download Tax Invoice" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Ledger Footer & Settlement Summary -->
+<div class="mt-6 p-4 rounded-lg bg-surface-container flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[24px]">verified</span>
+<div>
+<div class="font-title-md text-title-md font-bold text-on-surface">शून्य कमीशन गारंटी (Zero Hidden Brokerage)</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">किसान के खाते में 100% तय राशि जमा, मिल के खाते में डिजिटल ई-वे बिल व फॉर्म 6R स्वतः उत्पन्न।</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md shadow-sm" type="button">
+            पिछला पृष्ठ (Prev)
+          </button>
+<span class="font-label-md text-label-md text-on-surface font-semibold px-2">पृष्ठ 1 / 12</span>
+<button class="px-3 py-1.5 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md shadow-sm" type="button">
+            अगला पृष्ठ (Next)
+          </button>
+</div>
+</div>
+</div>
+<!-- TAB 2: Escrow Fund Management -->
+<div class="tab-content hidden p-6" id="tab-escrow">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Add Money To Escrow (Left Col) -->
+<div class="bg-surface-container-low p-5 rounded-lg">
+<div class="flex items-center gap-2 mb-3 text-primary">
+<span class="material-symbols-outlined text-[24px]">add_circle</span>
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface">फंड जोड़ें (Deposit to Escrow)</h3>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-4">
+            आगामी लॉट खरीद के लिए ICICI एस्क्रो वर्चुअल खाते में तुरंत राशि जमा करें।
+          </p>
+<form class="space-y-4" onsubmit="event.preventDefault(); alert('एस्क्रो बैंक गेटवे लोड हो रहा है...');">
+<div>
+<label class="block text-label-sm font-label-sm font-semibold text-on-surface mb-1">जमा राशि (Deposit Amount)</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 text-on-surface-variant font-bold">₹</span>
+<input class="w-full pl-8 pr-3 py-2.5 rounded bg-surface-container-lowest font-body-md text-body-md text-on-surface outline-none focus:ring-2 focus:ring-primary" placeholder="5,00,000" type="number" value="500000">
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-1.5 rounded bg-surface-container text-label-sm font-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-colors" type="button">+₹1,00,000</button>
+<button class="py-1.5 rounded bg-surface-container text-label-sm font-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-colors" type="button">+₹5,00,000</button>
+<button class="py-1.5 rounded bg-surface-container text-label-sm font-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-colors" type="button">+₹10,00,000</button>
+</div>
+<div class="pt-2">
+<button class="w-full py-3 rounded bg-primary text-on-primary font-title-md text-title-md font-bold shadow-md hover:bg-primary-container transition-all" type="submit">
+                नेटबैंकिंग / RTGS से जमा करें
+              </button>
+</div>
+<div class="text-center text-label-sm font-label-sm text-outline">RBI विनियमित नोडल एस्क्रो व्यवस्था</div>
+</form>
+</div>
+<!-- Escrow Smart Release Triggers (Center Col) -->
+<div class="bg-surface-container-low p-5 rounded-lg">
+<div class="flex items-center gap-2 mb-3 text-secondary">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface">ऑटो-रिलीज़ नियम (Release Triggers)</h3>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-4">
+            मिल के धर्मकांटा (Weighbridge) पर वजन व QC पुष्टि होते ही भुगतान किसान के खाते में प्रेषित होता है।
+          </p>
+<div class="space-y-3">
+<div class="p-3 rounded bg-surface-container-lowest flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_box</span>
+<div class="text-label-sm font-label-sm">
+<strong class="text-on-surface block font-title-md text-title-md">नियम 1: डिजिटल वेइंग स्लिप</strong>
+<span class="text-on-surface-variant">वजन कांटा ऑपरेटर द्वारा लाइव स्लिप अपलोड करने पर 70% भुगतान रिलीज।</span>
+</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_box</span>
+<div class="text-label-sm font-label-sm">
+<strong class="text-on-surface block font-title-md text-title-md">नियम 2: नमी व गुणवत्ता जांच</strong>
+<span class="text-on-surface-variant">लैब रिपोर्ट अनुमोदित (Moisture &lt;12%) होने पर शेष 30% तुरंत ट्रांसफर।</span>
+</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check_box</span>
+<div class="text-label-sm font-label-sm">
+<strong class="text-on-surface block font-title-md text-title-md">नियम 3: विवाद सुरक्षा विंडो (48 घंटे)</strong>
+<span class="text-on-surface-variant">यदि कोई विचलन हो तो किसान व मिल मध्यस्थता कक्ष द्वारा निर्णय।</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bank Reconciliation & Nodal Details (Right Col) -->
+<div class="bg-surface-container-low p-5 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-3 text-primary">
+<span class="material-symbols-outlined text-[24px]">domain_verification</span>
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface">एस्क्रो नोडल बैंक विवरण</h3>
+</div>
+<div class="space-y-2.5 text-label-sm font-label-sm">
+<div class="p-2.5 rounded bg-surface-container-lowest">
+<span class="text-outline block">लाभार्थी नाम:</span>
+<span class="font-bold text-on-surface font-title-md text-title-md">KisaanSahyog Escrow A/c Agarwal Flour Mills</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container-lowest">
+<span class="text-outline block">वर्चुअल खाता संख्या (VAN):</span>
+<span class="font-mono font-bold text-on-surface text-body-md">ICIC000102492811</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container-lowest">
+<span class="text-outline block">IFSC कोड:</span>
+<span class="font-mono font-bold text-on-surface">ICIC0000011 (ICICI Bank Nodal Branch)</span>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full py-2.5 rounded bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="">बैंक नोडल सर्टिफिकेट डाउनलोड करें</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 3: KYC & Mandi Licenses -->
+<div class="tab-content hidden p-6" id="tab-kyc">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Mandi License UP -->
+<div class="p-5 rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between mb-3">
+<div class="w-12 h-12 rounded bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">badge</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-bold">वैध (Valid)</span>
+</div>
+<h4 class="font-title-lg text-title-lg font-bold text-on-surface">UP राज्य कृषि विपणन बोर्ड</h4>
+<div class="text-label-md font-label-md text-secondary font-mono mt-1">लाइसेंस: UP-KNP-8821</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2">
+              कानपुर, उन्नाव व फतेहपुर मंडी क्षेत्र में प्रत्यक्ष खरीद प्राधिकार।
+            </p>
+<div class="mt-4 pt-3 border-t border-surface-container text-label-sm font-label-sm text-outline">
+              वैधता: 31 मार्च 2027 तक नवीनीकृत
+            </div>
+</div>
+<button class="mt-4 py-2 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="">लाइसेंस प्रति देखें (PDF)</span>
+</button>
+</div>
+<!-- eNAM National Trade Unified Permit -->
+<div class="p-5 rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between mb-3">
+<div class="w-12 h-12 rounded bg-surface-container-lowest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl">lan</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-bold">सक्रिय (Linked)</span>
+</div>
+<h4 class="font-title-lg text-title-lg font-bold text-on-surface">eNAM एकल एकीकृत लाइसेंस</h4>
+<div class="text-label-md font-label-md text-secondary font-mono mt-1">ID: ENAM-INTRA-99214</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2">
+              अंतर-राज्यीय (Inter-State) अनाज एवं तिलहन खरीद हेतु भारत सरकार एकीकृत परमिट।
+            </p>
+<div class="mt-4 pt-3 border-t border-surface-container text-label-sm font-label-sm text-outline">
+              कवरेज: MP, UP, Rajasthan, Haryana
+            </div>
+</div>
+<button class="mt-4 py-2 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="">eNAM परमिट देखें (PDF)</span>
+</button>
+</div>
+<!-- FSSAI Food Processor License -->
+<div class="p-5 rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between mb-3">
+<div class="w-12 h-12 rounded bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">sanitizer</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-bold">ऑडिट पूर्ण</span>
+</div>
+<h4 class="font-title-lg text-title-lg font-bold text-on-surface">FSSAI सेंट्रल फूड मैन्युफैक्चरिंग</h4>
+<div class="text-label-md font-label-md text-secondary font-mono mt-1">Lic: 10018051002341</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2">
+              गेहूं आटा, मैदा, सूजी एवं खाद्य तेल विनिर्माण व थोक भण्डारण मानक प्रमाणीकरण।
+            </p>
+<div class="mt-4 pt-3 border-t border-surface-container text-label-sm font-label-sm text-outline">
+              अंतिम निरीक्षण: 12 जनवरी 2025 (रेटिंग A)
+            </div>
+</div>
+<button class="mt-4 py-2 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="">FSSAI प्रमाण पत्र देखें</span>
+</button>
+</div>
+</div>
+</div>
+<!-- TAB 4: Saved Farmer Partners & FPO Network -->
+<div class="tab-content hidden p-6" id="tab-farmers">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface">पंजीकृत व पसंदीदा किसान पार्टनर</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">इन किसानों से गुणवत्ता पहले जांची जा चुकी है। 1-क्लिक में सीधा खरीद ऑफर भेजें।</p>
+</div>
+<button class="px-3.5 py-1.5 rounded bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span class="">नया किसान जोड़ें</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- Farmer 1 -->
+<div class="p-4 rounded-lg bg-surface-container-low shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-title-lg">
+                RK
+              </div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">रमेश कुमार पटेल</h4>
+<div class="text-label-sm font-label-sm text-on-surface-variant">सीतापुर, उत्तर प्रदेश</div>
+<div class="text-label-sm font-label-sm text-primary font-medium flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">star</span> 4.9 रेटिंग (6 सौदे पूर्ण)
+                </div>
+</div>
+</div>
+<div class="space-y-1.5 text-label-sm font-label-sm bg-surface-container-lowest p-3 rounded mb-3">
+<div class="flex justify-between">
+<span class="text-outline">प्रमुख फसल:</span>
+<span class="font-semibold text-on-surface">शरबती व 1544 गेहूं</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">कुल आपूर्ति:</span>
+<span class="font-semibold text-on-surface">320 क्विंटल</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">विश्वसनीयता:</span>
+<span class="font-semibold text-primary">100% सही नमी व वजन</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<button class="flex-1 py-2 rounded bg-primary text-on-primary hover:bg-primary-container font-label-sm text-label-sm font-semibold transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">shopping_cart_checkout</span>
+<span class="">सीधा ऑर्डर भेजें</span>
+</button>
+<button class="p-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface" title="Call Farmer" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+</div>
+</div>
+<!-- Farmer 2 -->
+<div class="p-4 rounded-lg bg-surface-container-low shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-title-lg">
+                MF
+              </div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">मालवा एग्रो फार्मर्स FPO</h4>
+<div class="text-label-sm font-label-sm text-on-surface-variant">उज्जैन, मध्य प्रदेश (340 सदस्य)</div>
+<div class="text-label-sm font-label-sm text-primary font-medium flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">verified</span> कॉर्पोरेट बल्क सप्लायर
+                </div>
+</div>
+</div>
+<div class="space-y-1.5 text-label-sm font-label-sm bg-surface-container-lowest p-3 rounded mb-3">
+<div class="flex justify-between">
+<span class="text-outline">प्रमुख फसल:</span>
+<span class="font-semibold text-on-surface">विशाल चना व सोयाबीन</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">कुल आपूर्ति:</span>
+<span class="font-semibold text-on-surface">820 क्विंटल</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">ग्रेडिंग सुविधा:</span>
+<span class="font-semibold text-primary">FPO स्वयं छंटाई युक्त</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<button class="flex-1 py-2 rounded bg-primary text-on-primary hover:bg-primary-container font-label-sm text-label-sm font-semibold transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">shopping_cart_checkout</span>
+<span class="">बल्क मांग भेजें</span>
+</button>
+<button class="p-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface" title="Message FPO Secretary" type="button">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</div>
+</div>
+<!-- Farmer 3 -->
+<div class="p-4 rounded-lg bg-surface-container-low shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-title-lg">
+                SP
+              </div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">सुरेश चोइथराम पटेल</h4>
+<div class="text-label-sm font-label-sm text-on-surface-variant">अलवर, राजस्थान</div>
+<div class="text-label-sm font-label-sm text-primary font-medium flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">star</span> 5.0 रेटिंग (4 सौदे पूर्ण)
+                </div>
+</div>
+</div>
+<div class="space-y-1.5 text-label-sm font-label-sm bg-surface-container-lowest p-3 rounded mb-3">
+<div class="flex justify-between">
+<span class="text-outline">प्रमुख फसल:</span>
+<span class="font-semibold text-on-surface">काली सरसों (42% तेल)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">कुल आपूर्ति:</span>
+<span class="font-semibold text-on-surface">240 क्विंटल</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">ऑर्गेनिक प्रमाणीकरण:</span>
+<span class="font-semibold text-primary">NPOP प्रमाणित</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<button class="flex-1 py-2 rounded bg-primary text-on-primary hover:bg-primary-container font-label-sm text-label-sm font-semibold transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">shopping_cart_checkout</span>
+<span class="">सीधा ऑर्डर भेजें</span>
+</button>
+<button class="p-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface" title="Call Farmer" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Simulation Toolkit / Judge Quick Validation Box -->
+<div class="p-4 rounded-lg bg-surface-container-high flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">troubleshoot</span>
+<div class="leading-tight">
+<span class="font-title-md text-title-md font-bold text-on-surface">सिमुलेशन टूल (Judge Evaluation Action)</span>
+<div class="text-label-sm font-label-sm text-on-surface-variant">लॉट 'TXN-UP-88509' की वेइंग स्लिप गेट पर पास करें और ₹3.92L एस्क्रो रिलीज़ देखें:</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 rounded bg-secondary text-on-secondary hover:opacity-90 font-label-md text-label-md font-bold shadow-sm flex items-center gap-1.5 transition-all" onclick="simulateGateApproval()" type="button">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+<span class="">धर्मकांटा वजन स्लिप पास करें (Simulate Gate Delivery)</span>
+</button>
+</div>
+</div>
+<!-- Dynamic Modal Backdrop for Fund Deposit Simulation -->
+<div class="fixed inset-0 bg-inverse-surface/60 z-50 hidden flex items-center justify-center p-4" id="fundModal">
+<div class="bg-surface-container-lowest max-w-md w-full rounded-xl p-6 shadow-xl relative animate-in fade-in zoom-in duration-200">
+<div class="flex items-center justify-between pb-3 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">account_balance</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">एस्क्रो जमा पुष्टि</h3>
+</div>
+<button class="text-outline hover:text-on-surface" onclick="closeFundModal()" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="py-4 space-y-3">
+<p class="text-body-md font-body-md text-on-surface">
+          Agarwal Flour Mills के ICICI Nodal Escrow खाते में तुरंत राशि जोड़ने हेतु पुष्टि करें:
+        </p>
+<div class="p-3 rounded bg-surface-container-low">
+<div class="text-label-sm font-label-sm text-outline">प्रस्तावित ट्रांसफर:</div>
+<div class="font-headline-lg text-headline-lg font-bold text-primary font-mono">₹5,00,000.00</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-1">स्रोत बैंक: HDFC Current A/c **9122</div>
+</div>
+<div class="text-label-sm font-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">info</span>
+          फंड सुरक्षित है और केवल माल धर्मकांटे पर उतरने पर रिलीज होगा।
+        </div>
+</div>
+<div class="flex items-center justify-end gap-3 pt-2">
+<button class="px-4 py-2 rounded bg-surface-container text-on-surface font-label-md text-label-md" onclick="closeFundModal()" type="button">रद्द करें</button>
+<button class="px-5 py-2 rounded bg-primary text-on-primary font-label-md text-label-md font-bold shadow-sm" onclick="confirmFundDeposit()" type="button">ट्रांसफर करें</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function switchTab(tabId) {
+    const tabs = ['tab-ledger', 'tab-escrow', 'tab-kyc', 'tab-farmers'];
+    tabs.forEach(id => {
+      const el = document.getElementById(id);
+      const btn = document.getElementById('btn-' + id);
+      if (id === tabId) {
+        el.classList.remove('hidden');
+        el.classList.add('block');
+        btn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm', '-mb-px');
+        btn.classList.remove('text-on-surface-variant');
+      } else {
+        el.classList.add('hidden');
+        el.classList.remove('block');
+        btn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm', '-mb-px');
+        btn.classList.add('text-on-surface-variant');
+      }
+    });
+  }
+
+  function showFundModal() {
+    document.getElementById('fundModal').classList.remove('hidden');
+  }
+
+  function closeFundModal() {
+    document.getElementById('fundModal').classList.add('hidden');
+  }
+
+  function confirmFundDeposit() {
+    closeFundModal();
+    alert('सफलतापूर्वक ₹5,00,000 ICICI एस्क्रो में जमा किए गए। नया बैलेंस: ₹19,80,000.00');
+  }
+
+  function simulateGateApproval() {
+    alert('सिमुलेशन क्रिया: लखीमपुर खीरी से ट्रक गेट पर पहुंचा। वजन 160 क्विंटल सत्यापित! ₹3,92,000 किसान बलविंदर सिंह गिल के बैंक खाते में सीधे आरटीजीएस द्वारा 20 सेकंड में प्रेषित!');
+  }
+</script></main></div>
+
+</body></html>

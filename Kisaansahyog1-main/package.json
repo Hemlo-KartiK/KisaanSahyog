@@ -1,0 +1,40 @@
+{
+  "name": "kisaansahyog-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "KisaanSahyog — a mobile-first PWA for crop advisory, soil health, mandi prices, and farmer skills.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20.19.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "dev:web": "npm run dev --workspace=@kisaansahyog/web",
+    "dev:api": "npm run dev --workspace=@kisaansahyog/api",
+    "build": "npm run build --workspaces --if-present",
+    "build:shared": "npm run build --workspace=@kisaansahyog/shared",
+    "build:web": "npm run build --workspace=@kisaansahyog/web",
+    "build:api": "npm run build --workspace=@kisaansahyog/api",
+    "clean": "npm run clean --workspaces --if-present",
+    "lint": "eslint .",
+    "test": "npm run test --workspaces --if-present",
+    "test:watch": "npm run test:watch -w @kisaansahyog/skills",
+    "typecheck": "npm run build -w @kisaansahyog/shared && npm run build -w @kisaansahyog/skills && npm run typecheck -w @kisaansahyog/api && npm run typecheck -w @kisaansahyog/web",
+    "preview": "npm run preview -w @kisaansahyog/web",
+    "start:api": "npm run start -w @kisaansahyog/api"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.6",
+    "eslint": "^10.13.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.13.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.0"
+  }
+}

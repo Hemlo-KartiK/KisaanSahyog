@@ -1,0 +1,47 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-and-build:
+    name: Lint, Test, Typecheck & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Test Suite
+        run: npm run test
+
+      - name: Run TypeScript Typecheck
+        run: npm run typecheck
+
+      - name: Full Monorepo Build
+        run: npm run build
+
+      - name: Verify Web Dist Artifacts
+        run: |
+          test -f apps/web/dist/index.html
+          test -f apps/web/dist/sw.js
+          test -f apps/web/dist/manifest.webmanifest
+
+      - name: Verify API Dist Artifacts
+        run: |
+          test -f apps/api/dist/index.js

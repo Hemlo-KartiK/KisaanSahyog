@@ -1,0 +1,30 @@
+# Dependencies & Caches
+node_modules
+.npm
+.vite
+.vitest
+
+# Build Artifacts
+dist
+build
+coverage
+
+# Environment & Local Files
+.env
+.env.local
+.env.*.local
+*.log
+npm-debug.log*
+
+# OS & Editor
+.git
+.github
+.gitignore
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# Temporary & Scratch
+tmp
+scratch

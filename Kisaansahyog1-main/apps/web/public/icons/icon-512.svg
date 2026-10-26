@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF6EE" />
+      <stop offset="100%" stop-color="#EFE6D5" />
+    </linearGradient>
+    <linearGradient id="leafGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4CAF50" />
+      <stop offset="100%" stop-color="#2E6B34" />
+    </linearGradient>
+    <linearGradient id="wheatGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5B82E" />
+      <stop offset="100%" stop-color="#C28712" />
+    </linearGradient>
+    <filter id="shadow512" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#4A2C17" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Circular Base Badge -->
+  <circle cx="256" cy="256" r="246" fill="url(#bgGrad512)" stroke="#4A2C17" stroke-width="10" />
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#E0A526" stroke-width="4" stroke-dasharray="14 10" opacity="0.6" />
+
+  <!-- Soil Base -->
+  <path d="M 118 362 Q 256 310 394 362 Q 256 416 118 362 Z" fill="#6B4226" opacity="0.85" filter="url(#shadow512)" />
+  <path d="M 150 368 Q 256 336 362 368 Q 256 394 150 368 Z" fill="#4A2C17" opacity="0.6" />
+
+  <!-- Sprout Stem -->
+  <path d="M 256 362 Q 256 240 256 176" fill="none" stroke="#2E6B34" stroke-width="12" stroke-linecap="round" />
+
+  <!-- Left Green Soil Leaf -->
+  <path d="M 256 256 C 186 250 148 198 165 144 C 213 144 250 202 256 256 Z" fill="url(#leafGrad512)" filter="url(#shadow512)" />
+  <path d="M 256 256 C 213 224 192 186 202 160" fill="none" stroke="#E6F2DF" stroke-width="5" stroke-linecap="round" opacity="0.7" />
+
+  <!-- Right Golden Wheat Sheaf Accent -->
+  <path d="M 256 218 C 325 212 362 160 346 106 C 298 106 261 165 256 218 Z" fill="url(#wheatGrad512)" filter="url(#shadow512)" />
+  <!-- Wheat Grains / Segments -->
+  <ellipse cx="304" cy="148" rx="16" ry="32" transform="rotate(30 304 148)" fill="#F5C443" />
+  <ellipse cx="282" cy="180" rx="13" ry="26" transform="rotate(25 282 180)" fill="#E0A526" />
+  <ellipse cx="330" cy="122" rx="13" ry="24" transform="rotate(35 330 122)" fill="#FFD56B" />
+
+  <!-- Crown Leaf Center -->
+  <path d="M 256 176 C 240 128 256 90 256 90 C 256 90 272 128 256 176 Z" fill="#3F8F3F" />
+</svg>

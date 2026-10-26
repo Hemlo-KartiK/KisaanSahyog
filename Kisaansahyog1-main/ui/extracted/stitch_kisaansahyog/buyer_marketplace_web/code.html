@@ -1,0 +1,964 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#271900", "surface-container": "#f1ede6", "on-error": "#ffffff", "tertiary": "#5e4200", "on-surface-variant": "#41493f", "error": "#ba1a1a", "surface-container-low": "#f7f3eb", "on-surface": "#1c1c17", "outline": "#71796e", "surface-variant": "#e6e2da", "surface-dim": "#dddad2", "on-primary-fixed-variant": "#12521e", "on-tertiary": "#ffffff", "on-secondary-fixed": "#311300", "on-secondary": "#ffffff", "primary": "#12521e", "on-tertiary-container": "#ffd385", "on-error-container": "#93000a", "surface-tint": "#2e6b34", "on-primary": "#ffffff", "on-secondary-fixed-variant": "#653d22", "on-background": "#1c1c17", "tertiary-fixed-dim": "#fabc3e", "inverse-surface": "#31302b", "error-container": "#ffdad6", "primary-fixed-dim": "#95d693", "inverse-primary": "#95d693", "surface-container-high": "#ece8e0", "secondary-fixed": "#ffdbc7", "tertiary-container": "#7d5800", "tertiary-fixed": "#ffdea8", "outline-variant": "#c0c9bc", "background": "#fdf9f1", "inverse-on-surface": "#f4f0e8", "secondary": "#805437", "on-primary-container": "#a7e9a5", "secondary-container": "#fec29e", "surface-bright": "#fdf9f1", "surface-container-highest": "#e6e2da", "on-primary-fixed": "#002106", "surface-container-lowest": "#ffffff", "surface": "#fdf9f1", "primary-fixed": "#b0f3ad", "primary-container": "#2e6b34", "secondary-fixed-dim": "#f4ba96", "on-tertiary-fixed-variant": "#5e4200", "on-secondary-container": "#794e31" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1rem", "space-lg": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "margin-desktop": "2.5rem", "space-xs": "0.25rem", "space-2xl": "3rem", "gutter": "1rem", "space-md": "1rem" }, "fontFamily": { "display-mobile": [ "\"Source Serif 4\"" ], "title-md": [ "Noto Sans" ], "body-md": [ "Noto Sans" ], "headline-lg-mobile": [ "\"Source Serif 4\"" ], "display": [ "\"Source Serif 4\"" ], "label-sm": [ "Noto Sans" ], "headline-lg": [ "\"Source Serif 4\"" ], "title-lg": [ "Noto Sans" ], "label-lg": [ "Noto Sans" ], "body-lg": [ "Noto Sans" ], "headline-md": [ "\"Source Serif 4\"" ], "label-md": [ "Noto Sans" ] }, "fontSize": { "display-mobile": [ "1.75rem", { "lineHeight": "2.25rem", "fontWeight": "700" } ], "title-md": [ "1rem", { "lineHeight": "1.5rem", "fontWeight": "600" } ], "body-md": [ "1rem", { "lineHeight": "1.5rem", "fontWeight": "400" } ], "headline-lg-mobile": [ "1.375rem", { "lineHeight": "1.875rem", "fontWeight": "600" } ], "display": [ "2.25rem", { "lineHeight": "2.75rem", "fontWeight": "700" } ], "label-sm": [ "0.75rem", { "lineHeight": "1rem", "fontWeight": "500" } ], "headline-lg": [ "1.75rem", { "lineHeight": "2.25rem", "fontWeight": "600" } ], "title-lg": [ "1.125rem", { "lineHeight": "1.625rem", "fontWeight": "600" } ], "label-lg": [ "0.9375rem", { "lineHeight": "1.375rem", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" } ], "headline-md": [ "1.25rem", { "lineHeight": "1.75rem", "fontWeight": "600" } ], "label-md": [ "0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-20 bg-surface/90 backdrop-blur-xl z-50 shadow-[0_1px_8px_rgba(43,29,18,0.06)]"><div class="h-20 w-full px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[28px]">handshake</span><div class="flex flex-col"><span class="font-headline-md text-headline-md text-secondary leading-none">KisaanSahyog</span><span class="font-label-sm text-label-sm text-outline tracking-wider">खरीदार मंच (B2B)</span></div></div><div class="hidden xl:flex items-center px-space-sm py-space-xs rounded-full bg-tertiary-fixed text-on-tertiary-fixed"><span class="material-symbols-outlined text-[16px] mr-space-xs">verified</span><span class="font-label-sm text-label-sm">0% कमीशन डायरेक्ट ट्रेड</span></div></div><div class="flex-1 max-w-xl mx-space-md hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-space-md text-outline pointer-events-none">search</span><input class="w-full h-12 pl-12 pr-12 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline shadow-[0_1px_4px_rgba(43,29,18,0.04)] focus:outline-none" placeholder="फसल, मंडी, या किस्म खोजें (उदा. शरबती गेहूं, चना)..." type="text"><button class="absolute right-space-sm w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:bg-primary transition-colors" title="बोलकर खोजें / Voice Search" type="button"><span class="material-symbols-outlined text-[20px]">mic</span></button></div></div><div class="flex items-center gap-space-sm shrink-0"><button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">language</span><span class="font-label-sm text-label-sm">हिंदी | ENG</span></button><button class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low text-secondary hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">devices</span><span class="font-label-sm text-label-sm">मोड</span></button><button class="relative w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="hidden md:flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-tight">Agarwal Flour Mills</span><span class="font-label-sm text-label-sm text-outline">Kanpur • GSTIN OK</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><aside class="fixed left-0 top-20 bottom-0 w-64 bg-surface-container-low z-40 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(43,29,18,0.04)]"><div class="flex flex-col gap-space-md"><div class="px-space-lg"><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">खाता पुस्तिका • नेविगेशन</span></div><nav class="flex flex-col gap-space-xs px-space-md" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[0_3px_0_#12521e]"><a aria-current="page" class="flex items-center h-14 px-space-md rounded-lg transition-all bg-primary-container text-on-primary font-bold shadow-[0_3px_0_#12521e]" data-path="bazaar-market" href="#"><span class="material-symbols-outlined mr-space-md text-[22px]">agriculture</span><span class="font-title-md text-title-md">🌾 बाज़ार (Market)</span></a><a class="flex items-center h-14 px-space-md rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="maang-requirements" href="#"><span class="material-symbols-outlined mr-space-md text-[22px]">assignment</span><span class="font-title-md text-title-md">📋 मांग (Orders)</span></a><a class="flex items-center h-14 px-space-md rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="saude-direct-offers" href="#"><span class="material-symbols-outlined mr-space-md text-[22px]">local_offer</span><span class="font-title-md text-title-md">🏷️ सौदे (Offers)</span></a><a class="flex items-center h-14 px-space-md rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="saved-alerts" href="#"><span class="material-symbols-outlined mr-space-md text-[22px]">bookmark</span><span class="font-title-md text-title-md">❤️ सेव (Saved)</span></a><a class="flex items-center h-14 px-space-md rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="profile-gstin" href="#"><span class="material-symbols-outlined mr-space-md text-[22px]">badge</span><span class="font-title-md text-title-md">👤 खाता (Ledger)</span></a></nav></div><div class="px-space-md"><div class="p-space-md rounded-lg bg-surface-container-lowest shadow-[0_2px_4px_rgba(43,29,18,0.06)]"><div class="flex items-center gap-space-xs text-secondary"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-label-md text-label-md">भरोसा गारंटी</span></div><p class="mt-space-xs font-label-sm text-label-sm text-outline leading-tight">एस्क्रो पेमेंट्स और एफपीओ सत्यापन सुरक्षित।</p></div></div></aside><div class="pl-64"><main class="relative w-full pt-20 px-gutter-desktop min-h-screen bg-surface"><div class="flex flex-col w-full">
+<!-- Interactive Device View Switcher Banner -->
+<div class="w-full bg-secondary text-on-secondary px-gutter-desktop py-space-xs rounded-xl shadow-md flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-secondary-fixed">devices</span>
+<span class="font-label-md text-label-md">डिवाइस मोड पूर्वावलोकन / Device Mode View:</span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container-lowest/15 p-1 rounded-full">
+<button class="flex items-center gap-space-xs px-space-md py-1 rounded-full font-label-sm text-label-sm hover:bg-surface-container-lowest/20 transition-all text-secondary-fixed" id="viewSwitchFarmer" type="button">
+<span class="material-symbols-outlined text-[16px]">smartphone</span>
+<span class="">📱 किसान मोबाइल ऐप (Farmer View)</span>
+</button>
+<div class="w-px h-4 bg-secondary-fixed/30"></div>
+<button class="flex items-center gap-space-xs px-space-md py-1 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-secondary shadow-sm font-bold" id="viewSwitchBuyer" type="button">
+<span class="material-symbols-outlined text-[16px]">laptop_mac</span>
+<span class="">💻 सक्रिय: खरीदार डेस्कटॉप पोर्टल (Buyer Web Portal)</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-block w-2 h-2 rounded-full bg-primary-fixed animate-ping"></span>
+<span class="font-label-sm text-label-sm text-secondary-fixed">eNAM / Agmarknet सिंक चालू</span>
+</div>
+</div>
+<!-- Interactive Simulation Testing Bar for Judges -->
+<div class="w-full bg-surface-container-high rounded-xl p-space-sm shadow-sm mb-space-lg flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[20px]">science</span>
+<span class="font-label-sm text-label-sm text-tertiary-container font-bold uppercase tracking-wider">जज सिमुलेशन टूलकिट (Judge Controls):</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-primary hover:text-on-primary transition-all text-label-sm font-label-sm shadow-sm" id="simApmcRates" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">wb_sunny</span>
+<span class="">1. Live Agmarknet Rates</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-primary hover:text-on-primary transition-all text-label-sm font-label-sm shadow-sm" id="simVoiceFilter" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">mic</span>
+<span class="">2. Voice: '50 Q Sharbati Sitapur'</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-primary hover:text-on-primary transition-all text-label-sm font-label-sm shadow-sm" id="simWhatsAppCall" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary-container">chat</span>
+<span class="">3. Test Direct Connect</span>
+</button>
+
+<button class="flex items-center gap-1 px-space-xs py-1.5 rounded-lg bg-surface-variant text-on-surface-variant hover:text-on-surface text-label-sm font-label-sm" id="resetSims" title="रीसेट करें" type="button">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Notification Banner for Simulation Status -->
+<div class="hidden w-full bg-primary-fixed text-on-primary-fixed p-space-sm rounded-lg mb-space-md shadow-sm items-center justify-between" id="simFeedback">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="font-label-md text-label-md" id="simFeedbackText">सिमुलेशन सक्रिय किया गया।</span>
+</div>
+<button class="text-on-primary-fixed/70 hover:text-on-primary-fixed" onclick="document.getElementById('simFeedback').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Top Metric Summary Ledger Strip -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-md p-space-md mb-space-lg">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="flex flex-col border-r-0 md:border-r border-outline-variant pr-space-md">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">कुल उपलब्ध लॉट / Active Lots</span>
+<div class="flex items-baseline gap-space-xs mt-0.5">
+<span class="font-display text-display text-primary leading-tight">128</span>
+<span class="font-label-md text-label-md text-on-surface-variant">लॉट्स</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +14 नए आज
+        </span>
+</div>
+<div class="flex flex-col border-r-0 md:border-r border-outline-variant pr-space-md">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">कुल मात्रा / Total Weight</span>
+<div class="flex items-baseline gap-space-xs mt-0.5">
+<span class="font-display text-display text-secondary leading-tight">4,250</span>
+<span class="font-label-md text-label-md text-on-surface-variant">क्विंटल (Q)</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">8 प्रमुख कृषि मंडियों से</span>
+</div>
+<div class="flex flex-col border-r-0 md:border-r border-outline-variant pr-space-md">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">औसत मंडी भाव / Avg Rate</span>
+<div class="flex items-baseline gap-space-xs mt-0.5">
+<span class="font-display text-display text-on-surface leading-tight">₹2,430</span>
+<span class="font-label-md text-label-md text-on-surface-variant">/ Q</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Agmarknet प्रमाणित मूल्य</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">मध्यस्थ कमीशन / Middleman Fee</span>
+<div class="flex items-baseline gap-space-xs mt-0.5">
+<span class="font-display text-display text-primary leading-tight">0%</span>
+<span class="font-label-md text-label-md text-primary font-bold">शून्य दलाली</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-primary-fixed-variant">सीधा किसान खाता भुगतान (Escrow)</span>
+</div>
+</div>
+</div>
+<!-- Main Marketplace Workspace: Sidebar + Catalog Grid -->
+<div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- STICKY FILTER SIDEBAR (4 cols on lg, responsive) -->
+<aside class="lg:col-span-4 bg-surface-container-low rounded-xl shadow-md p-space-md flex flex-col gap-space-md sticky top-24">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">tune</span>
+<h2 class="font-title-lg text-title-lg text-on-surface">फिल्टर एवं छंटाई (Filters)</h2>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors underline" id="resetFiltersBtn" type="button">
+          रीसेट करें (Reset)
+        </button>
+</div>
+<!-- Voice-Enabled Search Bar -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface">फसल अथवा किस्म खोजें</label>
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-space-sm text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full h-12 pl-10 pr-12 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline shadow-sm focus:outline-none" id="filterSearchInput" placeholder="उदा. शरबती, चना, सीहोर..." type="text">
+<button class="absolute right-1.5 w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center hover:bg-primary transition-all shadow-[0_2px_0_#12521e]" id="sidebarMicBtn" title="बोलकर खोजें" type="button">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</button>
+</div>
+</div>
+<!-- Crop Pills Selection -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface">फसल का प्रकार (Select Crop)</span>
+<div class="flex flex-wrap gap-1.5">
+<button class="crop-pill px-space-sm py-1 rounded-full text-label-sm font-label-sm bg-primary-container text-on-primary shadow-sm" data-crop="all" type="button">सभी (All)</button>
+<button class="crop-pill px-space-sm py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-variant transition-colors" data-crop="wheat" type="button">गेहूं (Wheat)</button>
+<button class="crop-pill px-space-sm py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-variant transition-colors" data-crop="mustard" type="button">सरसों (Mustard)</button>
+<button class="crop-pill px-space-sm py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-variant transition-colors" data-crop="chana" type="button">चना (Gram)</button>
+<button class="crop-pill px-space-sm py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-variant transition-colors" data-crop="paddy" type="button">बासमती (Paddy)</button>
+<button class="crop-pill px-space-sm py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-variant transition-colors" data-crop="soy" type="button">सोयाबीन</button>
+<button class="crop-pill px-space-sm py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-variant transition-colors" data-crop="potato" type="button">आलू (Potato)</button>
+</div>
+</div>
+<!-- Quantity Range Selector -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">आवश्यक मात्रा (Quantity in Quintals)</span>
+<span class="font-label-sm text-label-sm text-primary font-bold" id="qtyLabel">सभी मात्राएं</span>
+</div>
+<div class="grid grid-cols-4 gap-1">
+<button class="qty-btn px-2 py-1.5 rounded-lg text-center text-label-sm font-label-sm bg-surface-container-high hover:bg-surface-variant text-on-surface transition-all" type="button">&lt;50 Q</button>
+<button class="qty-btn px-2 py-1.5 rounded-lg text-center text-label-sm font-label-sm bg-surface-container-high hover:bg-surface-variant text-on-surface transition-all" type="button">50-200 Q</button>
+<button class="qty-btn px-2 py-1.5 rounded-lg text-center text-label-sm font-label-sm bg-surface-container-high hover:bg-surface-variant text-on-surface transition-all" type="button">200-500 Q</button>
+<button class="qty-btn px-2 py-1.5 rounded-lg text-center text-label-sm font-label-sm bg-surface-container-high hover:bg-surface-variant text-on-surface transition-all" type="button">500+ Q</button>
+</div>
+</div>
+<!-- State & District Filter -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface">राज्य एवं ज़िला (Location)</span>
+<select class="h-11 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm focus:outline-none" id="stateFilter">
+<option value="all">समस्त राज्य (All States)</option>
+<option value="UP">उत्तर प्रदेश (Sitapur, Kanpur, Agra)</option>
+<option value="PB">पंजाब (Ludhiana, Patiala)</option>
+<option value="HR">हरियाणा (Karnal, Kurukshetra)</option>
+<option value="MP">मध्य प्रदेश (Sehore, Ujjain)</option>
+<option value="RJ">राजस्थान (Kota, Bundi)</option>
+</select>
+</div>
+<!-- Fair-Price Guardrail Pill Filters -->
+<div class="flex flex-col gap-space-xs p-space-sm rounded-lg bg-surface-container-highest">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-md text-label-md font-bold">उचित मूल्य सुरक्षा (Fair-Price Filter)</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">मंडी रेट से अधिक बचत और बिना कमीशन वाले सौदे:</p>
+<div class="flex flex-col gap-1 mt-1">
+<label class="flex items-center gap-space-xs cursor-pointer py-1">
+<input checked="" class="w-4 h-4 accent-primary rounded" type="checkbox">
+<span class="font-body-md text-body-md text-on-surface">बाज़ार भाव से कम / बचत (Below Mandi Rate)</span>
+</label>
+<label class="flex items-center gap-space-xs cursor-pointer py-1">
+<input checked="" class="w-4 h-4 accent-primary rounded" type="checkbox">
+<span class="font-body-md text-body-md text-on-surface">समान बाज़ार भाव (Fair Mandi Rate)</span>
+</label>
+</div>
+</div>
+<!-- Trust Toggles -->
+<div class="flex flex-col gap-2">
+<label class="flex items-center justify-between cursor-pointer py-1.5 px-2 rounded-lg hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">gpp_good</span>
+<span class="font-body-md text-body-md text-on-surface">केवल सत्यापित किसान (Verified)</span>
+</div>
+<input checked="" class="w-4 h-4 accent-primary rounded" type="checkbox">
+</label>
+<label class="flex items-center justify-between cursor-pointer py-1.5 px-2 rounded-lg hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px]">local_shipping</span>
+<span class="font-body-md text-body-md text-on-surface">तुरंत उठान तैयार (Ready to Load)</span>
+</div>
+<input class="w-4 h-4 accent-primary rounded" type="checkbox">
+</label>
+<label class="flex items-center justify-between cursor-pointer py-1.5 px-2 rounded-lg hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">eco</span>
+<span class="font-body-md text-body-md text-on-surface">जैविक प्रमाणित (Organic Certified)</span>
+</div>
+<input class="w-4 h-4 accent-primary rounded" type="checkbox">
+</label>
+</div>
+<!-- Sorting -->
+<div class="flex flex-col gap-space-xs pt-space-xs border-t border-outline-variant">
+<label class="font-label-md text-label-md text-on-surface">क्रमबद्ध करें (Sort By)</label>
+<select class="h-10 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm focus:outline-none">
+<option>निकटतम मंडी / गोदाम (Nearest First)</option>
+<option>न्यूनतम भाव (Lowest Price First)</option>
+<option>अधिकतम मात्रा (Highest Quantity)</option>
+<option>सर्वोत्तम रेटिंग (Best Rated Farmers)</option>
+</select>
+</div>
+</aside>
+<!-- MAIN PRODUCT CATALOG GRID (8 cols on lg) -->
+<main class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Catalog Controls & View Stat -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-xl shadow-sm">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-md text-title-md text-on-surface">ताज़ा कृषि उत्पाद सूची</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">6 सक्रिय लॉट दृश्यमान</span>
+</div>
+<div class="flex items-center gap-space-sm text-label-sm font-label-sm text-outline">
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span> सीधे खेत से</span>
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span> मंडी भाव संरक्षित</span>
+</div>
+</div>
+<!-- PRODUCT CARDS FEED -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- CARD 1: Sharbati Wheat (Ludhiana) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all duration-200">
+<div class="relative w-full h-44 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up photograph of golden Sharbati wheat grains freshly harvested in warm natural sunlight on a burlap sack, high detail agricultural texture with rustic Indian farm setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAteyHVtIyXEiMDLde4Lp-o2HA07oQnJdnlWBwtx6ll9gABDGvDx37BtpkUqZSHoy3BV4m1xo6xZrlN_Oog7VtnRAhavoeJn5ROFYWJM6PFkCqT7mjtWRJebIJTr3aHKbG5Up_tXJflKUzCEegWkCNDutGIGL5eicpAWx_eg409E1U_vLk2f7Za0oSu2FyelDagho2LR-3HqJWL1dcg2vatos2I0bgPsUrNDVC5x-gNGn67oFq6mRGt">
+<div class="absolute top-space-xs left-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span> सत्यापित किसान
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm shadow-sm">
+                30 Q उपलब्ध
+              </span>
+</div>
+<button class="absolute top-space-xs right-space-xs w-9 h-9 rounded-full bg-surface/90 text-error flex items-center justify-center hover:scale-105 transition-transform shadow-sm" title="पसंदीदा में जोड़ें" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/80 to-transparent p-space-sm flex items-end justify-between text-on-primary">
+<span class="font-label-sm text-label-sm">खेत में तैयार • Ready Now</span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest/20 px-1.5 py-0.5 rounded backdrop-blur-sm">82 km दूर</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-xs flex-1">
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-snug">गेहूं (शरबती प्रीमियम)</h3>
+<div class="flex items-center gap-space-xs mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+<span class="font-label-md text-label-md">रमेश कुमार (Ramesh Kumar)</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">लुधियाना, पंजाब • 4.9 ★ (3 वर्ष पंजीकृत)</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors shrink-0" onclick="speakSummary('गेहूं शरबती, रमेश कुमार, लुधियाना। तीस क्विंटल, चौबीस सौ रुपये प्रति क्विंटल।')" title="विवरण सुनें" type="button">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+<!-- Price Breakdown & Fair Meter -->
+<div class="my-space-xs p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-display text-display text-primary leading-none">₹2,400</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant"> / क्विंटल</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline">कुल मूल्य (Total):</span>
+<span class="font-title-md text-title-md text-secondary block">₹72,000</span>
+</div>
+</div>
+<!-- Fair Price Tag -->
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant">
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[14px]">savings</span> बाज़ार भाव से 2% उचित (₹120/Q बचत)
+                </span>
+<span class="font-label-sm text-label-sm text-outline">APMC: ₹2,520</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2">
+              ग्रेड-A शरबती दाना, नमी 11.2%, बिना कंकड़ पत्थर, सीधे फ़ार्म गेट से लोडिंग की सुविधा उपलब्ध है।
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="p-space-md pt-0 grid grid-cols-2 gap-space-xs">
+<a class="h-11 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary-container transition-all" href="tel:+919876543210">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="">कॉल करें</span>
+</a>
+<a class="h-11 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary transition-all" href="https://wa.me/919876543210?text=नमस्ते%20रमेश%20जी,%20KisaanSahyog%20पर%20आपका%2030Q%20शरबती%20गेहूं%20का%20लॉट%20देखा।" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="">व्हाट्सएप</span>
+</a>
+<button class="col-span-2 h-10 rounded-lg bg-surface-container text-secondary font-title-md text-title-md flex items-center justify-center gap-1.5 hover:bg-secondary hover:text-on-secondary transition-colors" onclick="openOfferModal('गेहूं शरबती (30 Q)', 'रमेश कुमार', 2400, 30, 82)" type="button">
+<span class="material-symbols-outlined text-[18px]">local_offer</span>
+<span class="">सौदा भेजें / विवरण देखें (Make Offer)</span>
+</button>
+</div>
+</article>
+<!-- CARD 2: Pusa Bold Mustard (Sehore, MP) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all duration-200">
+<div class="relative w-full h-44 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="High contrast photograph of glossy dark brown and yellow mustard seeds heaped in traditional clay earthen bowl with yellow mustard flowers in rustic background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRNSwuLqum-21wmhbsVjtdvT0T7fi4nc1RtNWZlBmgerrjMMQHbnY81Y04fm5Tuo_UpK_jL_I2r6k_ujWzXxIhDuJQ6nal2zRTnZ9vDS_-4EIa41roJDYYtsG-qixAU8gx0oV9NP5PmlsgpK5AF98UUva4-B5w5_lz7U7YEo5tJOnNXIU5Gsr_v_uAHuARoCRpMLrufFFNlP7J4XkExFxZYhY4en16rQoLyLeWro5FBmwgp-6LMdQo">
+<div class="absolute top-space-xs left-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span> सत्यापित किसान
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm shadow-sm">
+                85 Q उपलब्ध
+              </span>
+</div>
+<button class="absolute top-space-xs right-space-xs w-9 h-9 rounded-full bg-surface/90 text-on-surface-variant flex items-center justify-center hover:scale-105 transition-transform shadow-sm" title="पसंदीदा में जोड़ें" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/80 to-transparent p-space-sm flex items-end justify-between text-on-primary">
+<span class="font-label-sm text-label-sm">3 दिन में कटाई तैयार • In 3 Days</span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest/20 px-1.5 py-0.5 rounded backdrop-blur-sm">210 km दूर</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-xs flex-1">
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-snug">सरसों (Pusa Bold)</h3>
+<div class="flex items-center gap-space-xs mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+<span class="font-label-md text-label-md">सुरेश पटेल (Suresh Patel)</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">सीहोर, मध्य प्रदेश • 4.8 ★</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors shrink-0" onclick="speakSummary('सरसों पूसा बोल्ड, सुरेश पटेल, सीहोर। पचासी क्विंटल, तिरपन सौ पचास रुपये प्रति क्विंटल।')" title="विवरण सुनें" type="button">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+<!-- Price Breakdown & Fair Meter -->
+<div class="my-space-xs p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-display text-display text-primary leading-none">₹5,350</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant"> / क्विंटल</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline">कुल मूल्य (Total):</span>
+<span class="font-title-md text-title-md text-secondary block">₹4,54,750</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant">
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[14px]">trending_down</span> बाज़ार से 3% कम (High Savings)
+                </span>
+<span class="font-label-sm text-label-sm text-outline">APMC: ₹5,520</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2">
+              तेल की मात्रा 41.5% लैब टेस्टेड, पूसा बोल्ड मोटा दाना। ऑयल मिलर्स और एक्सपेलर हेतु सर्वोत्तम।
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="p-space-md pt-0 grid grid-cols-2 gap-space-xs">
+<a class="h-11 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary-container transition-all" href="tel:+919876543211">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="">कॉल करें</span>
+</a>
+<a class="h-11 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary transition-all" href="https://wa.me/919876543211?text=नमस्ते%20सुरेश%20जी,%20KisaanSahyog%20पर%20आपका%2085Q%20सरसों%20का%20लॉट%20देखा।" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="">व्हाट्सएप</span>
+</a>
+<button class="col-span-2 h-10 rounded-lg bg-surface-container text-secondary font-title-md text-title-md flex items-center justify-center gap-1.5 hover:bg-secondary hover:text-on-secondary transition-colors" onclick="openOfferModal('सरसों पूसा बोल्ड (85 Q)', 'सुरेश पटेल', 5350, 85, 210)" type="button">
+<span class="material-symbols-outlined text-[18px]">local_offer</span>
+<span class="">सौदा भेजें / विवरण देखें</span>
+</button>
+</div>
+</article>
+<!-- CARD 3: 1121 Basmati Rice (Karnal, HR) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all duration-200">
+<div class="relative w-full h-44 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Macro view of slender long grain 1121 Basmati paddy grains and polished raw white basmati in Indian brass measuring vessel, natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-fVzFKU8lBx3sH2ij2Kv4MixhzUYmUWecxBlZTcMF_OvPDqnyto2aozXDresOIOMCzBVQg4Q9mKgcCpQfih4JSeWfVtT4m3r7H3W2zfWdr5POi1Wi9AmUynJe0K4uEy3gxDincIXZIZMAHOtlsENW5JPt8muwkAPIDa3yaozuTXzzDdfXkF3dBSliYGR9L1c1TnUDrNmzeoWo7o8YenzQOBVZO7aoGx9RoogpaO4YxoQs9HcTjNVL">
+<div class="absolute top-space-xs left-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span> सत्यापित किसान
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container text-on-primary font-label-sm text-label-sm shadow-sm">
+                120 Q उपलब्ध
+              </span>
+</div>
+<button class="absolute top-space-xs right-space-xs w-9 h-9 rounded-full bg-surface/90 text-on-surface-variant flex items-center justify-center hover:scale-105 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/80 to-transparent p-space-sm flex items-end justify-between text-on-primary">
+<span class="font-label-sm text-label-sm">गोदाम में सुरक्षित • In Warehouse</span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest/20 px-1.5 py-0.5 rounded backdrop-blur-sm">140 km दूर</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-xs flex-1">
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-snug">बासमती धान (1121 Basmati)</h3>
+<div class="flex items-center gap-space-xs mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+<span class="font-label-md text-label-md">गुरप्रीत सिंह (Gurpreet Singh)</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">करनाल, हरियाणा • 5.0 ★ (शीर्ष विक्रेता)</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors shrink-0" onclick="speakSummary('बासमती धान ग्यारह इक्कीस, गुरप्रीत सिंह, करनाल। एक सौ बीस क्विंटल, उनतालीस सौ बीस रुपये।')" type="button">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+<div class="my-space-xs p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-display text-display text-primary leading-none">₹3,920</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant"> / क्विंटल</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline">कुल मूल्य (Total):</span>
+<span class="font-title-md text-title-md text-secondary block">₹4,70,400</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant">
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[14px]">balance</span> बाज़ार भाव के समान (Fair Mandi Rate)
+                </span>
+<span class="font-label-sm text-label-sm text-outline">APMC: ₹3,950</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2">
+              अरोमायुक्त लंबा दाना, करनाल राइस हब से सीधी आपूर्ति, एक्सपोर्ट क्वालिटी मानक अनुरूप।
+            </p>
+</div>
+<div class="p-space-md pt-0 grid grid-cols-2 gap-space-xs">
+<a class="h-11 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary-container transition-all" href="tel:+919876543212">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="">कॉल करें</span>
+</a>
+<a class="h-11 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary transition-all" href="https://wa.me/919876543212?text=नमस्ते%20गुरप्रीत%20जी,%20KisaanSahyog%20पर%20आपका%20बासमती%20धान%20देखा।" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="">व्हाट्सएप</span>
+</a>
+<button class="col-span-2 h-10 rounded-lg bg-surface-container text-secondary font-title-md text-title-md flex items-center justify-center gap-1.5 hover:bg-secondary hover:text-on-secondary transition-colors" onclick="openOfferModal('बासमती धान 1121 (120 Q)', 'गुरप्रीत सिंह', 3920, 120, 140)" type="button">
+<span class="material-symbols-outlined text-[18px]">local_offer</span>
+<span class="">सौदा भेजें / विवरण देखें</span>
+</button>
+</div>
+</article>
+<!-- CARD 4: Desi Chana (Kota, Rajasthan) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all duration-200">
+<div class="relative w-full h-44 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Raw brown Desi Chana chickpeas in jute bag displayed outdoors under bright sky, clean quality agricultural crop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAalyKaaFlR2crDLNGegRUqhbKkGfKwLdRZUB2LSrhjYK6c9c-Rh_tR9-hfT6eB149ETp65CAI_rgq6oIyK6j9mzR96hauc2QJrHyE7fCTsJMiLPnjnMASNV1Y1JMCEmgglKw0ON5MB9SyWtnPY3Opnj5YsW3zqiu_Hj7R2jMRuW4EL8WNkSqIrJOJCMT5eOfv7UH11uXV9l0w4ntgHE-FkO3gBN0dbLY_lVAxQVYmw-CbJy6A1ANMu">
+<div class="absolute top-space-xs left-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm shadow-sm">
+                60 Q उपलब्ध
+              </span>
+</div>
+<button class="absolute top-space-xs right-space-xs w-9 h-9 rounded-full bg-surface/90 text-on-surface-variant flex items-center justify-center hover:scale-105 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/80 to-transparent p-space-sm flex items-end justify-between text-on-primary">
+<span class="font-label-sm text-label-sm">तुरंत उठान योग्य • Ready</span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest/20 px-1.5 py-0.5 rounded backdrop-blur-sm">290 km दूर</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-xs flex-1">
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-snug">चना (Desi Chana)</h3>
+<div class="flex items-center gap-space-xs mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+<span class="font-label-md text-label-md">महेंद्र सिंह (Mahendra Singh)</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">कोटा, राजस्थान • 4.7 ★</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors shrink-0" onclick="speakSummary('देसी चना, महेंद्र सिंह, कोटा। साठ क्विंटल, अट्ठावन सौ रुपये प्रति क्विंटल।')" type="button">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+<div class="my-space-xs p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-display text-display text-primary leading-none">₹5,800</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant"> / क्विंटल</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline">कुल मूल्य (Total):</span>
+<span class="font-title-md text-title-md text-secondary block">₹3,48,000</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant">
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[14px]">savings</span> बाज़ार से 1% कम (₹80/Q बचत)
+                </span>
+<span class="font-label-sm text-label-sm text-outline">APMC: ₹5,880</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2">
+              हाडोती क्षेत्र का कड़ा देसी चना, बेसन एवं दाल मिल प्रसंस्करण के लिए उच्च रिकवरी प्रतिशत।
+            </p>
+</div>
+<div class="p-space-md pt-0 grid grid-cols-2 gap-space-xs">
+<a class="h-11 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary-container transition-all" href="tel:+919876543213">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="">कॉल करें</span>
+</a>
+<a class="h-11 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary transition-all" href="https://wa.me/919876543213?text=नमस्ते%20महेंद्र%20जी,%20KisaanSahyog%20पर%20आपका%20चना%20का%20लॉट%20देखा।" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="">व्हाट्सएप</span>
+</a>
+<button class="col-span-2 h-10 rounded-lg bg-surface-container text-secondary font-title-md text-title-md flex items-center justify-center gap-1.5 hover:bg-secondary hover:text-on-secondary transition-colors" onclick="openOfferModal('देसी चना (60 Q)', 'महेंद्र सिंह', 5800, 60, 290)" type="button">
+<span class="material-symbols-outlined text-[18px]">local_offer</span>
+<span class="">सौदा भेजें / विवरण देखें</span>
+</button>
+</div>
+</article>
+<!-- CARD 5: Yellow Soybean (Ujjain, MP) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all duration-200">
+<div class="relative w-full h-44 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up photograph of dried yellow soybeans spilling from woven basket on clean floor, crisp agricultural commerce lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnFTGanAtqseF7E-jMTE_M2BdpZK4hPYqzopL4t61Oy7UxUqEK2KK_nliFyzPAL_Vmpaq_ImjB84awsd8eAj7z0O_gHz5P5ni-XEIOuLx-WTfwcF2wBU4DDsQbFUmIwnGKJB6jx12O7J5FYnuvuZOH8kgOJaQuhvLxzBF9SwNRIXh_c4cLx0ISdIdt7OWGASKjLZsMCJlPJ22AlDfiEroq_e8wFG1j3eFXBsF2Ef2N88x_CdZT35qV">
+<div class="absolute top-space-xs left-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span> FPO Verified
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm shadow-sm">
+                150 Q उपलब्ध
+              </span>
+</div>
+<button class="absolute top-space-xs right-space-xs w-9 h-9 rounded-full bg-surface/90 text-on-surface-variant flex items-center justify-center hover:scale-105 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/80 to-transparent p-space-sm flex items-end justify-between text-on-primary">
+<span class="font-label-sm text-label-sm">एफपीओ गोदाम उज्जैन • Verified</span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest/20 px-1.5 py-0.5 rounded backdrop-blur-sm">260 km दूर</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-xs flex-1">
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-snug">सोयाबीन (Yellow Soybean)</h3>
+<div class="flex items-center gap-space-xs mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+<span class="font-label-md text-label-md">राजेश जोशी (Rajesh Joshi)</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">उज्जैन, मध्य प्रदेश • मालवा किसान FPO</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors shrink-0" onclick="speakSummary('पीली सोयाबीन, राजेश जोशी, उज्जैन। एक सौ पचास क्विंटल, छियालीस सौ पचास रुपये।')" type="button">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+<div class="my-space-xs p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-display text-display text-primary leading-none">₹4,650</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant"> / क्विंटल</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline">कुल मूल्य (Total):</span>
+<span class="font-title-md text-title-md text-secondary block">₹6,97,500</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant">
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[14px]">savings</span> बाज़ार से 2.5% उचित
+                </span>
+<span class="font-label-sm text-label-sm text-outline">APMC: ₹4,770</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2">
+              JS-9560 किस्म, तेल व प्रोटीन संतुलित, ग्रेडिंग मशीन द्वारा साफ़ की गई उच्च गुणवत्ता वाली लॉट।
+            </p>
+</div>
+<div class="p-space-md pt-0 grid grid-cols-2 gap-space-xs">
+<a class="h-11 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary-container transition-all" href="tel:+919876543214">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="">कॉल करें</span>
+</a>
+<a class="h-11 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary transition-all" href="https://wa.me/919876543214?text=नमस्ते%20राजेश%20जी,%20KisaanSahyog%20पर%20आपका%20सोयाबीन%20का%20लॉट%20देखा।" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="">व्हाट्सएप</span>
+</a>
+<button class="col-span-2 h-10 rounded-lg bg-surface-container text-secondary font-title-md text-title-md flex items-center justify-center gap-1.5 hover:bg-secondary hover:text-on-secondary transition-colors" onclick="openOfferModal('सोयाबीन पीला (150 Q)', 'राजेश जोशी', 4650, 150, 260)" type="button">
+<span class="material-symbols-outlined text-[18px]">local_offer</span>
+<span class="">सौदा भेजें / विवरण देखें</span>
+</button>
+</div>
+</article>
+<!-- CARD 6: Potato Pukhraj/Chipsona (Agra, UP) -->
+<article class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col justify-between hover:shadow-lg transition-all duration-200">
+<div class="relative w-full h-44 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Cold storage warehouse bags filled with fresh large clean Chipsona potatoes ready for transport in Agra agricultural belt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDomgu7T9ExYfbV4L2UeBl-HuDx_BIN98NBwotKSRU8xpMv7H7V_9TB3NCQbrQCvV-qTXaaVdQ0Za6ObywCdlL7RHLhdYeB2t6t_6C20ADlDxftqA29Du1Ojk_wIoK1o7M8hqJxrCyG6jo7ZGjgVw5ktOVZDRE4uKB4DFupBzuCWMrVxUgj69mkJrWS1TZ_IwSCi2x5f6y1r5hjZBEJD0Ad8_6js-pmsF2YTRdP1ahPY93NiKvoZxaW">
+<div class="absolute top-space-xs left-space-xs flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span> सत्यापित कोल्ड स्टोरेज
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm shadow-sm">
+                300 Q उपलब्ध
+              </span>
+</div>
+<button class="absolute top-space-xs right-space-xs w-9 h-9 rounded-full bg-surface/90 text-on-surface-variant flex items-center justify-center hover:scale-105 transition-transform shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">favorite_border</span>
+</button>
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/80 to-transparent p-space-sm flex items-end justify-between text-on-primary">
+<span class="font-label-sm text-label-sm">कोल्ड स्टोरेज आगरा • Stored</span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest/20 px-1.5 py-0.5 rounded backdrop-blur-sm">115 km दूर</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-xs flex-1">
+<div class="flex items-start justify-between gap-space-xs">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-snug">आलू (Pukhraj / Chipsona)</h3>
+<div class="flex items-center gap-space-xs mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">person</span>
+<span class="font-label-md text-label-md">राम अवतार (Ram Avtar)</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">आगरा, उत्तर प्रदेश • 4.9 ★</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors shrink-0" onclick="speakSummary('आलू चिप्सोना, राम अवतार, आगरा। तीन सौ क्विंटल, बारह सौ पचास रुपये प्रति क्विंटल।')" type="button">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+<div class="my-space-xs p-space-xs rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-display text-display text-primary leading-none">₹1,250</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant"> / क्विंटल</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline">कुल मूल्य (Total):</span>
+<span class="font-title-md text-title-md text-secondary block">₹3,75,000</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant">
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[14px]">savings</span> बाज़ार से 4% किफायती
+                </span>
+<span class="font-label-sm text-label-sm text-outline">APMC: ₹1,300</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2">
+              45mm+ साइज़, आलू चिप्स एवं फ़ूड प्रोसेसिंग उद्योग हेतु उपयुक्त, तुरंत ट्रक लोडिंग की सुविधा।
+            </p>
+</div>
+<div class="p-space-md pt-0 grid grid-cols-2 gap-space-xs">
+<a class="h-11 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary-container transition-all" href="tel:+919876543215">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="">कॉल करें</span>
+</a>
+<a class="h-11 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary transition-all" href="https://wa.me/919876543215?text=नमस्ते%20राम%20अवतार%20जी,%20KisaanSahyog%20पर%20आपका%20आलू%20का%20लॉट%20देखा।" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="">व्हाट्सएप</span>
+</a>
+<button class="col-span-2 h-10 rounded-lg bg-surface-container text-secondary font-title-md text-title-md flex items-center justify-center gap-1.5 hover:bg-secondary hover:text-on-secondary transition-colors" onclick="openOfferModal('आलू चिप्सोना (300 Q)', 'राम अवतार', 1250, 300, 115)" type="button">
+<span class="material-symbols-outlined text-[18px]">local_offer</span>
+<span class="">सौदा भेजें / विवरण देखें</span>
+</button>
+</div>
+</article>
+</div>
+</main>
+</div>
+<!-- MODAL / DRAWER: Listing Details & Fair-Price Guardrail & Make Offer -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/60 backdrop-blur-sm" id="offerModal">
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+<!-- Modal Header -->
+<div class="p-space-md bg-surface-container flex items-center justify-between border-b border-outline-variant">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">verified_user</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface" id="modalTitle">लॉट विवरण एवं निष्पक्ष मूल्य सुरक्षा</h3>
+<span class="font-label-sm text-label-sm text-outline" id="modalFarmer">किसान: रमेश कुमार • सीधा सौदा</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-variant flex items-center justify-center text-on-surface hover:bg-error hover:text-on-error transition-colors" onclick="closeOfferModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="p-space-md flex flex-col gap-space-md overflow-y-auto">
+<!-- Agmarknet 7-Day Trend Chart (Inline SVG) -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold">7-दिवसीय Agmarknet मंडी मूल्य रुझान (Trend)</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">स्थिर तेज़ी (+1.8%)</span>
+</div>
+<!-- SVG Line Sparkline Chart -->
+<div class="w-full h-28 pt-2">
+<svg class="w-full h-full overflow-visible" fill="none" preserveAspectRatio="none" viewBox="0 0 500 100">
+<!-- Grid lines -->
+<line class="text-outline-variant/40" stroke="currentColor" stroke-dasharray="4" x1="0" x2="500" y1="20" y2="20"></line>
+<line class="text-outline-variant/40" stroke="currentColor" stroke-dasharray="4" x1="0" x2="500" y1="50" y2="50"></line>
+<line class="text-outline-variant/40" stroke="currentColor" stroke-dasharray="4" x1="0" x2="500" y1="80" y2="80"></line>
+<!-- Gradient Area under curve -->
+<defs>
+<linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2e6b34" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#2e6b34" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<path d="M0,75 C70,68 120,82 180,60 C240,40 300,50 360,35 C420,20 460,25 500,15 L500,100 L0,100 Z" fill="url(#chartGradient)"></path>
+<!-- Trend Line -->
+<path d="M0,75 C70,68 120,82 180,60 C240,40 300,50 360,35 C420,20 460,25 500,15" fill="none" stroke="#2e6b34" stroke-linecap="round" stroke-width="3"></path>
+<!-- Data Points with values -->
+<circle cx="0" cy="75" fill="#2e6b34" r="4"></circle>
+<circle cx="180" cy="60" fill="#2e6b34" r="4"></circle>
+<circle cx="360" cy="35" fill="#2e6b34" r="4"></circle>
+<circle cx="500" cy="15" fill="#12521e" r="5"></circle>
+</svg>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-outline">
+<span class="">6 दिन पूर्व (₹2,380)</span>
+<span class="">4 दिन पूर्व (₹2,400)</span>
+<span class="">2 दिन पूर्व (₹2,420)</span>
+<span class="font-bold text-primary">आज (₹2,440)</span>
+</div>
+</div>
+<!-- Landed Logistics Cost Calculator -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span class="font-label-md text-label-md font-bold">पहुंच लागत कैलकुलेटर (Landed Logistics Cost)</span>
+</div>
+<div class="grid grid-cols-3 gap-space-sm mt-1">
+<div class="p-space-xs rounded-lg bg-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-outline block">खेत से दूरी</span>
+<span class="font-title-md text-title-md text-on-surface" id="calcDistance">82 km</span>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-outline block">परिवहन दर (अनुमानित)</span>
+<span class="font-title-md text-title-md text-on-surface" id="calcTransport">₹65 / Q</span>
+</div>
+<div class="p-space-xs rounded-lg bg-primary-container text-on-primary">
+<span class="font-label-sm text-label-sm text-on-primary-container block">गोदाम पहुंच दर</span>
+<span class="font-title-md text-title-md font-bold" id="calcLandedRate">₹2,465 / Q</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">0% मंडी उपकर + 0% आढ़तिया कमीशन = खरीदार को सीधे ₹115/Q की शुद्ध बचत।</span>
+</div>
+<!-- Make an Offer Stepper Form with AI Warning Guardrail -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-bold">अपना सीधा प्रस्ताव दर्ज करें (Enter Buyer Offer)</label>
+<div class="grid grid-cols-2 gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-outline block mb-1">मात्रा (Quintals)</span>
+<input class="w-full h-11 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-title-md text-title-md focus:outline-none shadow-sm" id="offerQtyInput" type="number" value="30">
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-outline block mb-1">प्रस्तावित दर (₹ / Quintal)</span>
+<input class="w-full h-11 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-title-md text-title-md focus:outline-none shadow-sm" id="offerRateInput" oninput="validateOfferGuardrail()" type="number" value="2350">
+</div>
+</div>
+<!-- Dynamic Guardrail Warning Badge -->
+<div class="hidden p-space-sm rounded-lg bg-error-container text-on-error-container mt-1 flex items-start gap-space-xs" id="offerWarningBadge">
+<span class="material-symbols-outlined text-error text-[20px] shrink-0">warning</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">अनुचित कम बोली चेतावनी (Unfair Price Alert)</span>
+<span class="font-label-sm text-label-sm">आपका प्रस्ताव सरकारी न्यूनतम समर्थन मूल्य (MSP) अथवा औसत मंडी भाव से 15% से अधिक कम है। इसे किसान द्वारा अस्वीकार किया जा सकता है।</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-primary-fixed text-on-primary-fixed mt-1 flex items-center gap-space-xs" id="offerFairBadge">
+<span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+<span class="font-label-md text-label-md">उचित मूल्य प्रस्ताव: किसान को त्वरित स्वीकृति मिलने की 92% संभावना है।</span>
+</div>
+</div>
+<!-- Escrow Protection Note -->
+<div class="p-space-sm rounded-lg bg-surface-container-highest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">account_balance</span>
+<span class="font-label-sm text-label-sm text-on-surface">सौदा तय होने पर राशि KisaanSahyog सुरक्षित एस्क्रो में जमा होगी तथा डिलीवरी जांच के बाद ही किसान को हस्तांतरित होगी।</span>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-space-md bg-surface-container flex items-center justify-end gap-space-sm border-t border-outline-variant">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-high text-on-surface font-title-md text-title-md hover:bg-surface-variant transition-colors" onclick="closeOfferModal()" type="button">
+          रद्द करें
+        </button>
+<button class="px-space-lg py-2.5 rounded-lg bg-primary text-on-primary font-title-md text-title-md shadow-[0_3px_0_#12521e] active:shadow-none hover:bg-primary-container transition-all flex items-center gap-1.5" onclick="submitOffer()" type="button">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span class="">प्रस्ताव किसान को भेजें</span>
+</button>
+</div>
+</div>
+</div>
+<!-- FLOATING KISAAN MITRA VOICE ASSISTANT BADGE (Buyer-Specific States) -->
+<div class="fixed bottom-6 left-72 z-50">
+<div class="flex items-center gap-space-sm bg-surface-container-lowest p-2 pr-4 rounded-full shadow-[0_4px_16px_rgba(43,29,18,0.15)] border-0" id="kisaanMitraBadge">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm cursor-pointer hover:scale-105 transition-transform" id="mitraMicNode" onclick="triggerMitraVoice()">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md text-on-surface font-bold">खरीदार मित्र AI</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] bg-primary-fixed text-on-primary-fixed font-bold" id="mitraStatusTag">तैयार / Ready</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline cursor-pointer" id="mitraPrompt" onclick="triggerMitraVoice()">क्लिक कर बोलें या फसल खोजें</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SCRIPT FOR COMPREHENSIVE INTERACTIVITY & SIMULATION TESTING -->
+<script>
+  let currentBasePrice = 2400;
+
+  // 1. Text-to-Speech Accessibility Handler
+  function speakSummary(hindiText) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(hindiText);
+      utterance.lang = 'hi-IN';
+      utterance.rate = 0.95;
+      window.speechSynthesis.speak(utterance);
+      showFeedback('🔊 ऑडियो विवरण बोला जा रहा है: ' + hindiText);
+    } else {
+      showFeedback('ऑडियो विवरण: ' + hindiText);
+    }
+  }
+
+  // 2. Feedback Notification Toast
+  function showFeedback(msg) {
+    const banner = document.getElementById('simFeedback');
+    const txt = document.getElementById('simFeedbackText');
+    if (banner && txt) {
+      txt.innerText = msg;
+      banner.classList.remove('hidden');
+      setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 5000);
+    }
+  }
+
+  // 3. Modal Controllers
+  function openOfferModal(title, farmer, baseRate, qty, distance) {
+    currentBasePrice = baseRate;
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalFarmer').innerText = 'किसान: ' + farmer + ' • सीधा सौदा (Direct Trade)';
+    document.getElementById('offerRateInput').value = baseRate;
+    document.getElementById('offerQtyInput').value = qty;
+    document.getElementById('calcDistance').innerText = distance + ' km';
+    
+    const transportPerQ = Math.round(distance * 0.8);
+    document.getElementById('calcTransport').innerText = '₹' + transportPerQ + ' / Q';
+    document.getElementById('calcLandedRate').innerText = '₹' + (baseRate + transportPerQ) + ' / Q';
+    
+    validateOfferGuardrail();
+    document.getElementById('offerModal').classList.remove('hidden');
+  }
+
+  function closeOfferModal() {
+    document.getElementById('offerModal').classList.add('hidden');
+  }
+
+  // 4. Fair-Price Guardrail Validator
+  function validateOfferGuardrail() {
+    const entered = parseFloat(document.getElementById('offerRateInput').value) || 0;
+    const warning = document.getElementById('offerWarningBadge');
+    const fair = document.getElementById('offerFairBadge');
+    
+    if (entered < (currentBasePrice * 0.85)) {
+      warning.classList.remove('hidden');
+      fair.classList.add('hidden');
+    } else {
+      warning.classList.add('hidden');
+      fair.classList.remove('hidden');
+    }
+  }
+
+  function submitOffer() {
+    const entered = document.getElementById('offerRateInput').value;
+    const qty = document.getElementById('offerQtyInput').value;
+    closeOfferModal();
+    showFeedback('✓ आपका प्रस्ताव ₹' + entered + '/Q की दर से ' + qty + ' क्विंटल हेतु किसान को एसएमएस और व्हाट्सएप पर प्रेषित कर दिया गया है!');
+  }
+
+  // 5. Interactive Judge Simulation Tools
+  document.getElementById('simApmcRates').addEventListener('click', function() {
+    showFeedback('✓ लाइव Agmarknet APMC एपीआई रिफ्रेश सफल! 128 लॉट के मंडी भाव ताज़ा आंकड़ों के साथ सिंक किए गए।');
+  });
+
+  document.getElementById('simVoiceFilter').addEventListener('click', function() {
+    const input = document.getElementById('filterSearchInput');
+    input.value = '50 Q Sharbati Gehu Sitapur';
+    showFeedback('🎙️ वॉइस इनपुट समझा गया: [50 Q Sharbati Gehu Sitapur] → फिल्टर स्वतः लागू!');
+  });
+
+  document.getElementById('simWhatsAppCall').addEventListener('click', function() {
+    showFeedback('📲 किसान से डायरेक्ट कॉल / एंड-टू-एंड व्हाट्सएप चैट लिंक टेस्ट सफल (0% मध्यस्थ हस्तक्षेप)!');
+  });
+
+  document.getElementById('sim2GMode').addEventListener('click', function() {
+    alert("📶 [2G SMS मोड सक्रिय]:\n\nKisaanSahyog 160-Char SMS View:\n1. GEHU SHARBATI | 30Q | ₹2400/Q | Ludhiana | Call: 9876543210\n2. SARSON PUSA | 85Q | ₹5350/Q | Sehore | Call: 9876543211\n\nडेटा उपयोग 94% कम किया गया।");
+    showFeedback('📶 2G लो-बैंडविड्थ टेक्स्ट मोड सक्रिय।');
+  });
+
+  document.getElementById('resetSims').addEventListener('click', function() {
+    document.getElementById('filterSearchInput').value = '';
+    showFeedback('सभी सिमुलेशन और खोज फिल्टर मूल स्थिति में रिसेट किए गए।');
+  });
+
+  // 6. Device Switcher Toggle
+  document.getElementById('viewSwitchFarmer').addEventListener('click', function() {
+    alert("📱 [किसान मोबाइल इंटरफेस सिम्युलेटर]:\n\nआपको किसान दृश्य पर स्विच किया जा रहा है: फसल लिस्टिंग, सीधे खरीदार प्रस्ताव, और बैंक खाता भुगतान पासबुक।");
+  });
+
+  document.getElementById('viewSwitchBuyer').addEventListener('click', function() {
+    showFeedback('💻 आप वर्तमान में सक्रिय खरीदार वेब पोर्टल पर हैं।');
+  });
+
+  // 7. Interactive Mitra Assistant States
+  function triggerMitraVoice() {
+    const tag = document.getElementById('mitraStatusTag');
+    const prompt = document.getElementById('mitraPrompt');
+    const node = document.getElementById('mitraMicNode');
+    
+    tag.innerText = 'सुन रहे हैं... (Listening)';
+    tag.className = 'px-1.5 py-0.2 rounded text-[10px] bg-tertiary text-on-tertiary font-bold animate-pulse';
+    prompt.innerText = 'कृपया अपनी मांग बताएं...';
+    
+    setTimeout(() => {
+      tag.innerText = 'सोच रहे हैं... (Analyzing)';
+      tag.className = 'px-1.5 py-0.2 rounded text-[10px] bg-secondary text-on-secondary font-bold';
+      prompt.innerText = 'निकटतम और उचित मूल्य वाले लॉट खोजे जा रहे हैं...';
+    }, 1500);
+
+    setTimeout(() => {
+      tag.innerText = 'कार्रवाई पूर्ण (Ready)';
+      tag.className = 'px-1.5 py-0.2 rounded text-[10px] bg-primary text-on-primary font-bold';
+      prompt.innerText = '✓ पंजाब और यूपी के 3 श्रेष्ठ गेहूं लॉट छांटे गए।';
+      showFeedback('🤖 खरीदार मित्र AI: सर्वोत्तम 3 गेहूं लॉट फ़िल्टर कर दिखाए गए।');
+    }, 3200);
+  }
+
+  // 8. Crop Pill Filter Toggles
+  document.querySelectorAll('.crop-pill').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.crop-pill').forEach(b => {
+        b.className = 'crop-pill px-space-sm py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-variant transition-colors';
+      });
+      this.className = 'crop-pill px-space-sm py-1 rounded-full text-label-sm font-label-sm bg-primary-container text-on-primary shadow-sm';
+      showFeedback('फसल फ़िल्टर लागू: ' + this.innerText);
+    });
+  });
+
+  // 9. Quantity Pill Filter Toggles
+  document.querySelectorAll('.qty-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.qty-btn').forEach(b => {
+        b.className = 'qty-btn px-2 py-1.5 rounded-lg text-center text-label-sm font-label-sm bg-surface-container-high hover:bg-surface-variant text-on-surface transition-all';
+      });
+      this.className = 'qty-btn px-2 py-1.5 rounded-lg text-center text-label-sm font-label-sm bg-secondary text-on-secondary font-bold shadow-sm';
+      document.getElementById('qtyLabel').innerText = this.innerText;
+      showFeedback('मात्रा सीमा सेट: ' + this.innerText);
+    });
+  });
+
+  document.getElementById('resetFiltersBtn').addEventListener('click', function() {
+    document.getElementById('filterSearchInput').value = '';
+    document.getElementById('stateFilter').value = 'all';
+    document.getElementById('qtyLabel').innerText = 'सभी मात्राएं';
+    showFeedback('सभी फ़िल्टर पुनः सेट कर दिए गए।');
+  });
+
+  document.getElementById('sidebarMicBtn').addEventListener('click', function() {
+    triggerMitraVoice();
+  });
+</script></main></div><div class="fixed bottom-space-lg right-space-lg z-50 flex items-center"><button class="flex items-center gap-space-sm h-14 px-space-lg rounded-full bg-primary-container text-on-primary shadow-[0_4px_16px_rgba(46,107,52,0.35),0_3px_0_#12521e] active:shadow-none hover:bg-primary transition-all" type="button"><span class="material-symbols-outlined text-[24px] animate-pulse">mic</span><div class="flex flex-col text-left"><span class="font-title-md text-title-md leading-none">किसान मित्र</span><span class="font-label-sm text-label-sm text-on-primary-container">बोल कर खोजें या सौदा करें</span></div></button></div>
+
+</body></html>

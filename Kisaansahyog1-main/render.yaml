@@ -1,0 +1,44 @@
+services:
+  # Express API Service
+  - type: web
+    name: kisaansahyog-api
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm ci && npm run build:shared && npm run build:api
+    startCommand: npm run start:api
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+
+  # Web PWA Static Site
+  - type: static
+    name: kisaansahyog-web
+    env: static
+    buildCommand: npm ci && npm run build:shared && npm run build -w @kisaansahyog/skills && npm run build:web
+    staticPublishPath: ./apps/web/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: kisaansahyog-api
+          property: host
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false

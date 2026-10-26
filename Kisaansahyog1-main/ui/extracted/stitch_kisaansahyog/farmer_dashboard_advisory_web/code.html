@@ -1,0 +1,679 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-low":"#f7f3eb","on-error-container":"#93000a","surface-bright":"#fdf9f1","tertiary-fixed-dim":"#fabc3e","on-primary-fixed-variant":"#12521e","primary":"#12521e","tertiary":"#5e4200","on-background":"#1c1c17","inverse-on-surface":"#f4f0e8","on-primary-container":"#a7e9a5","outline-variant":"#c0c9bc","secondary-fixed":"#ffdbc7","error-container":"#ffdad6","on-primary-fixed":"#002106","on-primary":"#ffffff","outline":"#71796e","on-error":"#ffffff","surface-tint":"#2e6b34","surface":"#fdf9f1","on-secondary-container":"#794e31","on-tertiary-fixed-variant":"#5e4200","surface-container-lowest":"#ffffff","surface-container":"#f1ede6","surface-dim":"#dddad2","on-tertiary":"#ffffff","tertiary-fixed":"#ffdea8","inverse-surface":"#31302b","primary-fixed":"#b0f3ad","on-tertiary-fixed":"#271900","on-surface":"#1c1c17","secondary-container":"#fec29e","on-secondary":"#ffffff","primary-fixed-dim":"#95d693","primary-container":"#2e6b34","secondary-fixed-dim":"#f4ba96","error":"#ba1a1a","surface-variant":"#e6e2da","inverse-primary":"#95d693","on-tertiary-container":"#ffd385","secondary":"#805437","on-secondary-fixed-variant":"#653d22","surface-container-high":"#ece8e0","tertiary-container":"#7d5800","surface-container-highest":"#e6e2da","background":"#fdf9f1","on-secondary-fixed":"#311300","on-surface-variant":"#41493f"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xs":"0.25rem","margin-desktop":"2.5rem","margin":"1rem","gutter-desktop":"1.5rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem","gutter":"1rem","space-xl":"2rem","space-2xl":"3rem"},"fontFamily":{"body-lg":["Noto Sans"],"title-lg":["Noto Sans"],"headline-md":["\"Source Serif 4\""],"headline-lg":["\"Source Serif 4\""],"label-lg":["Noto Sans"],"body-md":["Noto Sans"],"title-md":["Noto Sans"],"label-sm":["Noto Sans"],"display-mobile":["\"Source Serif 4\""],"headline-lg-mobile":["\"Source Serif 4\""],"label-md":["Noto Sans"],"display":["\"Source Serif 4\""]},"fontSize":{"body-lg":["1.125rem",{"lineHeight":"1.75rem","fontWeight":"400"}],"title-lg":["1.125rem",{"lineHeight":"1.625rem","fontWeight":"600"}],"headline-md":["1.25rem",{"lineHeight":"1.75rem","fontWeight":"600"}],"headline-lg":["1.75rem",{"lineHeight":"2.25rem","fontWeight":"600"}],"label-lg":["0.9375rem",{"lineHeight":"1.375rem","fontWeight":"600"}],"body-md":["1rem",{"lineHeight":"1.5rem","fontWeight":"400"}],"title-md":["1rem",{"lineHeight":"1.5rem","fontWeight":"600"}],"label-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"500"}],"display-mobile":["1.75rem",{"lineHeight":"2.25rem","fontWeight":"700"}],"headline-lg-mobile":["1.375rem",{"lineHeight":"1.875rem","fontWeight":"600"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"500"}],"display":["2.25rem",{"lineHeight":"2.75rem","fontWeight":"700"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface"><div class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md shadow-[0_1px_8px_rgba(43,29,18,0.06)]"><div class="w-full bg-surface-container-high px-gutter-desktop py-space-xs flex flex-wrap items-center justify-between text-on-surface-variant"><div class="flex items-center gap-space-sm"><span class="font-label-sm text-label-sm text-secondary font-semibold">मोड चयन / Switch Portal:</span><div class="inline-flex items-center gap-space-xs"><a class="px-space-sm py-0.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-sm text-label-sm flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[14px]">smartphone</span>मोबाइल ऐप</a><span class="px-space-sm py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm flex items-center gap-1 font-semibold"><span class="material-symbols-outlined text-[14px]">laptop_chromebook</span>किसान वेब डेस्क (सक्रिय)</span><a class="px-space-sm py-0.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-sm text-label-sm flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[14px]">storefront</span>खरीदार पोर्टल</a></div></div><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-secondary font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">tune</span>डेमो टूलकिट:</span><div class="flex items-center gap-space-xs"><button class="px-space-xs py-0.5 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container text-label-sm font-label-sm flex items-center gap-1 shadow-sm" type="button"><span class="material-symbols-outlined text-[14px] text-tertiary">sunny</span>लाइव मौसम</button><button class="px-space-xs py-0.5 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container text-label-sm font-label-sm flex items-center gap-1 shadow-sm" type="button"><span class="material-symbols-outlined text-[14px] text-secondary">water_loss</span>सूखी मिट्टी अलर्ट</button><button class="px-space-xs py-0.5 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container text-label-sm font-label-sm flex items-center gap-1 shadow-sm" type="button"><span class="material-symbols-outlined text-[14px] text-primary">volume_up</span>ऑडियो सहायता</button></div><div class="h-4 w-[1px] bg-outline-variant"></div><a class="flex items-center gap-1 font-label-sm text-label-sm text-primary hover:text-primary-container font-semibold" href="tel:18001801551"><span class="material-symbols-outlined text-[15px]">support_agent</span>हेल्पलाइन: 1800-180-1551</a><div class="flex items-center gap-1 text-label-sm font-label-sm"><span class="material-symbols-outlined text-[14px] text-on-surface-variant">translate</span><select class="bg-transparent text-on-surface font-label-sm text-label-sm focus:outline-none cursor-pointer"><option>हिंदी</option><option>ਪੰਜਾਬੀ</option><option>English</option></select></div></div></div><header class="h-20 w-full px-gutter-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md min-w-[280px]"><div class="w-11 h-11 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[26px]">agriculture</span></div><div><div class="font-headline-md text-headline-md text-primary tracking-tight leading-none">KisaanSahyog किसान सहयोग</div><div class="font-label-sm text-label-sm text-secondary">कृषि समाधान व किसान बाज़ार · डिजिटल बही-खाता</div></div></div><div class="flex-1 max-w-xl"><div class="relative flex items-center"><div class="absolute left-space-md text-on-surface-variant flex items-center pointer-events-none"><span class="material-symbols-outlined text-[20px]">search</span></div><input class="w-full h-11 pl-11 pr-24 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant font-body-md text-body-md shadow-[0_1px_4px_rgba(43,29,18,0.06)] focus:outline-none focus:ring-1 focus:ring-primary" placeholder="फसल सलाह, बीज, मंडी भाव खोजें या बोलें... (Search in हिंदी, ਪੰਜਾਬੀ, ENG)" type="text"><div class="absolute right-space-sm flex items-center gap-1"><button class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed hover:bg-primary-fixed-dim flex items-center justify-center transition-colors" title="Speak / बोलकर खोजें" type="button"><span class="material-symbols-outlined text-[18px]">mic</span></button></div></div></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm text-right"><div class="hidden xl:block"><div class="font-title-md text-title-md text-on-surface leading-tight">नमस्ते रमेश कुमार जी</div><div class="font-label-sm text-label-sm text-on-surface-variant">लुधियाना, पंजाब · सतलुज FPO · <span class="text-primary font-semibold">KYC सत्यापित ✓</span></div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header></div><aside class="fixed left-0 top-[112px] h-[calc(100vh-112px)] w-72 bg-surface-container-low shadow-[0_1px_8px_rgba(43,29,18,0.04)] z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-sm"><div class="px-space-md py-space-xs font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">मुख्य कार्यपटल / Desk Nav</div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary"><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-md rounded transition-all group bg-primary-container text-on-primary" data-path="crop-and-advisory-dashboard" href="#"><span class="material-symbols-outlined text-primary group-hover:scale-105 transition-transform">potted_plant</span><div class="flex flex-col text-left"><span class="font-title-md text-title-md leading-tight">मेरी फसल व सलाह</span><span class="font-label-sm text-label-sm text-on-surface-variant">Crop Health &amp; Advisory</span></div></a><a class="flex items-center gap-space-md px-space-md py-space-md rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all group" data-path="soil-and-iot-telemetry" href="#"><span class="material-symbols-outlined text-primary group-hover:scale-105 transition-transform">sensors</span><div class="flex flex-col text-left"><span class="font-title-md text-title-md leading-tight">मिट्टी व IoT स्वास्थ्य</span><span class="font-label-sm text-label-sm text-on-surface-variant">Soil Moisture &amp; Telemetry</span></div></a><a class="flex items-center gap-space-md px-space-md py-space-md rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all group" data-path="sell-crop-and-mandi-rates" href="#"><span class="material-symbols-outlined text-primary group-hover:scale-105 transition-transform">storefront</span><div class="flex flex-col text-left"><span class="font-title-md text-title-md leading-tight">फसल बेचें व मंडी भाव</span><span class="font-label-sm text-label-sm text-on-surface-variant">Mandi Rates &amp; Bids</span></div></a><a class="flex items-center gap-space-md px-space-md py-space-md rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all group" data-path="farmer-deals-escrow-and-khata" href="#"><span class="material-symbols-outlined text-primary group-hover:scale-105 transition-transform">menu_book</span><div class="flex flex-col text-left"><span class="font-title-md text-title-md leading-tight">मेरे सौदे व खाता</span><span class="font-label-sm text-label-sm text-on-surface-variant">Escrow Khata &amp; Payouts</span></div></a><a class="flex items-center gap-space-md px-space-md py-space-md rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all group" data-path="labour-and-machinery-fpo-hub" href="#"><span class="material-symbols-outlined text-primary group-hover:scale-105 transition-transform">handshake</span><div class="flex flex-col text-left"><span class="font-title-md text-title-md leading-tight">सहयोग डायरेक्टरी</span><span class="font-label-sm text-label-sm text-on-surface-variant">Machinery, Labour &amp; FPO</span></div></a></nav></div><div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs text-primary font-title-md text-title-md"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="">किसान सुरक्षा कवच</span></div><p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">प्रत्येक लेन-देन सुरक्षित एस्क्रो और FPO गारंटी के साथ संचालित होता है।</p><div class="flex items-center justify-between pt-space-xs font-label-sm text-label-sm text-secondary"><span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px]">lock</span>सुरक्षित सर्वर</span><span class="font-semibold text-primary">256-Bit SSL</span></div></div></aside><div class="pl-72"><main class="relative pt-28 pb-16 w-full px-gutter-desktop min-h-screen bg-background"><div class="flex flex-col w-full gap-space-lg">
+<!-- Judge Simulation Testing Ribbon -->
+<div class="w-full bg-surface-container-high rounded-xl p-space-sm shadow-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-secondary pl-space-xs">
+<span class="material-symbols-outlined text-[18px]">experiment</span>
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-wider">परीक्षण सिम्युलेटर / Judge Demo Triggers:</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm flex items-center gap-1.5 font-label-md text-label-md transition-all active:scale-95" onclick="triggerSimulation('sunny')" type="button">
+<span class="">☀️</span><span class="">साफ़ मौसम (Clear Sky)</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm flex items-center gap-1.5 font-label-md text-label-md transition-all active:scale-95" onclick="triggerSimulation('rain')" type="button">
+<span class="">🌧️</span><span class="">भारी बारिश व तूफ़ान (Rain Alert)</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm flex items-center gap-1.5 font-label-md text-label-md transition-all active:scale-95" onclick="triggerSimulation('dry_soil')" type="button">
+<span class="">💧</span><span class="">सूखी मिट्टी 15% (Dry Soil)</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary shadow-sm flex items-center gap-1.5 font-label-md text-label-md transition-all hover:bg-primary-container active:scale-95" onclick="openVoiceModal()" type="button">
+<span class="material-symbols-outlined text-[16px]">mic</span><span class="">आवाज़ से कार्य (Voice AI)</span>
+</button>
+</div>
+</div>
+<!-- Top Hero Ledger Welcome Banner -->
+<div class="relative w-full bg-surface-container-lowest rounded-xl p-space-lg shadow-md overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary"></div>
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md relative z-10">
+<div class="flex items-center gap-space-md">
+<div class="w-16 h-16 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shadow-inner flex-shrink-0">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-space-xs mb-0.5">
+<span class="px-space-xs py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold">सतलुज FPO सदस्य</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">खेत ब्लॉक #4B</span>
+<span class="font-label-sm text-label-sm text-secondary">24 Oct 2024 · आश्विन कृष्ण अष्टमी</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+            राम-राम रमेश जी 🙏 <span class="font-normal text-on-surface">| आज का दिन शुभ हो</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">location_on</span>
+            लुधियाना, पंजाब (Ludhiana, Punjab) · कुल रकबा: <strong class="text-on-surface">8.5 एकड़</strong> · मुख्य फसल: <strong class="text-on-surface">गेहूं PBW 824</strong>
+</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full lg:w-auto">
+<button class="w-full sm:w-auto h-14 px-space-lg rounded-xl bg-primary hover:bg-primary-container text-on-primary shadow-md flex items-center justify-center gap-space-sm font-title-md text-title-md transition-all active:translate-y-0.5" onclick="playFullAdvisoryAudio()" type="button">
+<span class="material-symbols-outlined text-[24px]">volume_up</span>
+<div class="flex flex-col text-left">
+<span class="leading-none font-semibold">संपूर्ण सलाह सुनें</span>
+<span class="font-label-sm text-label-sm opacity-90 leading-tight">Listen Daily Briefing (हिंदी/ਪੰਜਾਬੀ)</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Savings Alert & Weather Telemetry Row -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Direct Benefit / Fertilizer Savings Ledger Card (5 cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-8 -bottom-8 w-40 h-40 rounded-full bg-primary-fixed/20 pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2 text-primary font-title-md text-title-md">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+<span class="">सीधी आर्थिक बचत / Verified Today's Saving</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">100% सुरक्षित</span>
+</div>
+<div class="my-space-md p-space-md rounded-xl bg-surface-container-low">
+<div class="flex items-baseline gap-2">
+<span class="font-display text-display text-primary font-bold">₹1,400</span>
+<span class="font-label-lg text-label-lg text-secondary font-semibold">खाद लागत बचत (Saved Today)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-1 leading-snug">
+            आगामी <strong>4 घंटे में 45mm वर्षा</strong> के पूर्वानुमान के कारण यूरिया का दूसरा छिड़काव स्थगित किया गया।
+          </p>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="">बचत कारण: पानी में यूरिया लीचिंग बचाव</span>
+<span class="text-primary font-semibold">2 बोरी यूरिया सुरक्षित ✓</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">eco</span>
+<span class="">सतलुज कृषि विज्ञान केंद्र (KVK) द्वारा सत्यापित</span>
+</div>
+<button class="text-primary hover:text-primary-container p-1 rounded hover:bg-surface-container flex items-center gap-1 font-label-sm text-label-sm font-semibold" onclick="speakText('₹1,400 खाद बचत! बारिश के पूर्वानुमान के कारण यूरिया छिड़काव स्थगित किया गया।')" type="button">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>बोलकर सुनें
+        </button>
+</div>
+</div>
+<!-- Live Farm Weather Station Telemetry Widget (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-md flex flex-col justify-between relative overflow-hidden" id="weatherCard">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-xs pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[24px]">thunderstorm</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface leading-tight">लुधियाना ग्रामीण वेदर स्टेशन #14</div>
+<div class="font-label-sm text-label-sm text-secondary">IoT सेंसर लाइव डेटा · अपडेट: 12 मिनट पहले</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-space-sm py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+              82% बारिश चेतावनी (Next 4 Hrs)
+            </span>
+</div>
+</div>
+<!-- Telemetry Indicators Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm my-space-md">
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-tertiary">thermostat</span>तापमान
+            </span>
+<span class="font-headline-lg text-headline-lg text-on-surface mt-1">29°C</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">सामान्य (22°C - 31°C)</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">rainy</span>वर्षा संभावना
+            </span>
+<span class="font-headline-lg text-headline-lg text-error mt-1">45 mm</span>
+<span class="font-label-sm text-label-sm text-error font-semibold">भारी बौछार अनुमान</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">air</span>हवा की गति
+            </span>
+<span class="font-headline-lg text-headline-lg text-on-surface mt-1">14 <span class="text-body-md font-body-md">km/h</span></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">दिशा: दक्षिण-पूर्व</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">humidity_percentage</span>मिट्टी नमी (10cm)
+            </span>
+<span class="font-headline-lg text-headline-lg text-primary mt-1">38%</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">पर्याप्त नमी (Optimal)</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-space-xs bg-surface-container-low p-space-sm rounded-lg">
+<p class="font-body-md text-body-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">lightbulb</span>
+<span class=""><strong>सलाह:</strong> आज ट्यूबवेल न चलाएं। खेतों से जल-निकासी मार्ग (Drainage) साफ़ रखें।</span>
+</p>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary hover:bg-primary hover:text-on-primary shadow-sm font-label-md text-label-md flex items-center justify-center gap-1 flex-shrink-0 transition-colors" onclick="speakText('मौसम सलाह: आगामी 4 घंटे में 45 मिलीमीटर बारिश का अलर्ट है। हवा की गति 14 किलोमीटर प्रति घंटा है। कृपया सिंचाई तुरंत बंद रखें।')" type="button">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+<span class="">मौसम ऑडियो सुनें</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Active Crop Growth Stage Timeline: PBW 824 Wheat (120 Days Cycle) -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[28px]">grain</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-primary">सक्रिय फसल: गेहूं PBW 824 (Wheat Lifecycle)</h2>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">120 दिन का चक्र</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">बुवाई तिथि: 26 सितम्बर 2024 · आज <strong>28वां दिन (Day 28 of 120)</strong> · अनुमानित कटाई: 15 फ़रवरी 2025</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md font-semibold">
+          अपेक्षित उपज: 24.5 क्विंटल / एकड़
+        </span>
+</div>
+</div>
+<!-- 5 Visual Growth Stages Ledger Track -->
+<div class="w-full bg-surface-container-low p-space-md rounded-xl">
+<div class="relative grid grid-cols-1 md:grid-cols-5 gap-space-sm">
+<!-- Stage 1: Done -->
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-lowest opacity-90">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-secondary font-bold">चरण 1 · दिन 1-7</span>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface">बीज बोना</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Seed Sowing &amp; Bedding</div>
+<span class="mt-2 text-primary font-label-sm text-label-sm font-semibold">सफलतापूर्वक पूर्ण ✓</span>
+</div>
+<!-- Stage 2: Done -->
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-lowest opacity-90">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-secondary font-bold">चरण 2 · दिन 8-20</span>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface">अंकुरण</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Germination Stage</div>
+<span class="mt-2 text-primary font-label-sm text-label-sm font-semibold">96% अंकुरण दर ✓</span>
+</div>
+<!-- Stage 3: ACTIVE (Current) -->
+<div class="flex flex-col p-space-sm rounded-lg bg-primary-fixed shadow-md relative overflow-hidden">
+<div class="absolute top-1 right-2">
+<span class="flex h-3 w-3 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+</div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-primary-fixed-variant font-bold">चरण 3 · दिन 21-45</span>
+<span class="px-1.5 py-0.2 rounded bg-primary text-on-primary font-label-sm text-[10px] font-bold">वर्तमान सक्रिय</span>
+</div>
+<div class="font-title-md text-title-md text-on-primary-fixed font-bold">टिलरिंग / कल्ले फूटना</div>
+<div class="font-label-sm text-label-sm text-on-primary-fixed-variant">Crown Root &amp; Tillering</div>
+<div class="mt-2 flex items-center justify-between font-label-sm text-label-sm text-primary font-bold">
+<span class="">दिन 28 / 45</span>
+<span class="">62% पूर्ण</span>
+</div>
+</div>
+<!-- Stage 4: Upcoming -->
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-lowest opacity-60">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">चरण 4 · दिन 46-90</span>
+<span class="material-symbols-outlined text-outline text-[18px]">radio_button_unchecked</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface">दाने भरना</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Booting &amp; Grain Filling</div>
+<span class="mt-2 font-label-sm text-label-sm text-on-surface-variant">प्रारंभ: 12 नवम्बर 2024</span>
+</div>
+<!-- Stage 5: Upcoming Harvest -->
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-lowest opacity-60">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">चरण 5 · दिन 91-120</span>
+<span class="material-symbols-outlined text-outline text-[18px]">radio_button_unchecked</span>
+</div>
+<div class="font-title-md text-title-md text-on-surface">कटाई व गहाई</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Ripening &amp; Harvesting</div>
+<span class="mt-2 font-label-sm text-label-sm text-on-surface-variant">प्रारंभ: 15 फ़रवरी 2025</span>
+</div>
+</div>
+<!-- Stage Progress Fill Bar -->
+<div class="w-full bg-surface-variant h-2.5 rounded-full mt-space-md overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 23.3%;"></div>
+</div>
+</div>
+<!-- Agronomist Note Box -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-bold">डॉ. गुरप्रीत सिंह (वरिष्ठ सस्य वैज्ञानिक, PAU लुधियाना):</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            "कल्ले फूटने की अवस्था में जड़ों में पर्याप्त नमी रखें। भारी बारिश के बाद पानी का ठहराव 12 घंटे से अधिक न होने दें। गुल्ली डंडा (Phalaris minor) खरपतवार नियंत्रण की जांच 30वें दिन करें।"
+          </p>
+</div>
+</div>
+<button class="px-space-md py-2 rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-bright shadow-sm font-label-md text-label-md flex items-center gap-1.5 flex-shrink-0" onclick="speakText('डॉ. गुरप्रीत सिंह की सलाह: कल्ले फूटने की अवस्था में जड़ों में पर्याप्त नमी रखें। भारी बारिश के बाद जलभराव रोकें।')" type="button">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+<span class="">वैज्ञानिक टिप्पणी सुनें</span>
+</button>
+</div>
+</div>
+<!-- Split Two-Column Section: Today's Tasks & Profit-Ranked Crop Intelligence -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT: Today's Field Tasks & Daily Action Ledger (6 cols) -->
+<div class="xl:col-span-6 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">assignment</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">आज के कृषि कार्य (Today's Field Tasks)</h2>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">3 कार्य सूचीबद्ध · 24 Oct</span>
+</div>
+<!-- Task Cards Stack -->
+<div class="flex flex-col gap-space-sm">
+<!-- Task 1: Urea (Postponed - Big Save) -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-tertiary"></div>
+<div class="flex items-start justify-between gap-space-sm pl-2">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">science</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<h3 class="font-title-md text-title-md text-on-surface">यूरिया छिड़काव (Urea Top-Dressing)</h3>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-bold">स्थगित (Postponed)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">मात्रा: 45 किग्रा/एकड़ · ब्लॉक 4B (गेहूं खेत)</p>
+</div>
+</div>
+<button class="p-2 rounded-lg bg-surface-container-low text-primary hover:bg-surface-container" onclick="speakText('यूरिया छिड़काव कार्य स्थगित किया गया है। बारिश के कारण खाद बह सकती थी, जिससे आपके चौदह सौ रुपये बचे हैं।')" title="Audio Explanation" type="button">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+</div>
+<div class="pl-2 mt-space-xs pt-space-xs flex flex-wrap items-center justify-between gap-2 bg-surface-container-low p-space-sm rounded-lg">
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-bold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+              ₹1,400 बचाए (खाद का बहाव रोका गया)
+            </span>
+<span class="font-label-sm text-label-sm text-secondary">नई तारीख: 27 Oct (धूप खिलने पर)</span>
+</div>
+</div>
+<!-- Task 2: Irrigation (Cancelled) -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-outline"></div>
+<div class="flex items-start justify-between gap-space-sm pl-2">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">water_drop</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<h3 class="font-title-md text-title-md text-on-surface">हल्की सिंचाई (First CRI Irrigation)</h3>
+<span class="px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">रद्द (Cancelled - Rain Coming)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">ट्यूबवेल स्लॉट #2 · बिजली व पानी की बचत</p>
+</div>
+</div>
+<button class="p-2 rounded-lg bg-surface-container-low text-primary hover:bg-surface-container" onclick="speakText('हल्की सिंचाई रद्द कर दी गई है। प्रकृति खुद आज 45 मिलीमीटर पानी देगी, जिससे मोटर का बिल व डीजल बचा।')" title="Audio Explanation" type="button">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+</div>
+<div class="pl-2 mt-space-xs pt-space-xs flex flex-wrap items-center justify-between gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="">सटीक वर्षा 45mm अपेक्षित · ट्यूबवेल बंद रखें</span>
+<span class="text-primary font-semibold">बिजली यूनिट बचत: 35 Unit</span>
+</div>
+</div>
+<!-- Task 3: Drainage Inspection (Active / Action Required) -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary"></div>
+<div class="flex items-start justify-between gap-space-sm pl-2">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">engineering</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<h3 class="font-title-md text-title-md text-on-surface">मेड़ व नाली निरीक्षण (Field Drainage Check)</h3>
+<span class="px-space-xs py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm font-bold">सक्रिय कार्य (Action Required)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">पूर्वी सीमा नाली के कचरे की सफाई करें ताकि पानी न भरे।</p>
+</div>
+</div>
+<button class="p-2 rounded-lg bg-surface-container-low text-primary hover:bg-surface-container" onclick="speakText('मेड़ व नाली का निरीक्षण आज अति आवश्यक है। बारिश से पूर्व नालियों से खरपतवार हटा लें।')" title="Audio Explanation" type="button">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+</div>
+<div class="pl-2 mt-space-xs pt-space-xs flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">प्राथमिकता: उच्च (बारिश शुरू होने से पहले)</span>
+<button class="px-space-md py-1 rounded bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold transition-all" type="button">
+              कार्य पूर्ण चिह्नित करें ✓
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT: Profit-Ranked Crop Intelligence (6 cols) -->
+<div class="xl:col-span-6 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[24px]">trending_up</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">फसल मुनाफ़ा रैंकिंग (Crop Profit Intelligence)</h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">रबी सीज़न 2024-25 विश्लेषण</span>
+</div>
+<!-- 3 Profit Cards -->
+<div class="flex flex-col gap-space-sm">
+<!-- Rank #1: Mustard (Highest Net Profit) -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs transition-all hover:shadow-md">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-space-sm">
+<span class="w-7 h-7 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-bold font-label-md text-label-md">#1</span>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">सरसों (Mustard - Pusa Bold)</h3>
+<span class="font-label-sm text-label-sm text-secondary">कम लागत · अधिकतम बाज़ार मूल्य</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md text-primary font-bold">₹48,200</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">अनुमानित शुद्ध लाभ / एकड़</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 bg-surface-container-low p-space-sm rounded-lg mt-1">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">पानी मांग (Water)</span>
+<span class="font-label-md text-label-md text-primary font-bold flex items-center gap-0.5">💧💧 <span class="font-normal text-on-surface-variant">(कम पानी)</span></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">मंडी मांग (Demand)</span>
+<span class="font-label-md text-label-md text-secondary font-bold">92% (अति तेज़)</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant">अपेक्षित मंडी भाव</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">₹5,650 / Q</span>
+</div>
+</div>
+</div>
+<!-- Rank #2: Desi Chana -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs transition-all hover:shadow-md">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-space-sm">
+<span class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-bold font-label-md text-label-md">#2</span>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">देसी चना (Desi Chana - JG 14)</h3>
+<span class="font-label-sm text-label-sm text-secondary">न्यूनतम सिंचाई · भूमि उर्वरक सुधार</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md text-primary font-bold">₹41,500</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">अनुमानित शुद्ध लाभ / एकड़</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 bg-surface-container-low p-space-sm rounded-lg mt-1">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">पानी मांग (Water)</span>
+<span class="font-label-md text-label-md text-primary font-bold flex items-center gap-0.5">💧 <span class="font-normal text-on-surface-variant">(मात्र 1 सिंचाई)</span></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">मंडी मांग (Demand)</span>
+<span class="font-label-md text-label-md text-secondary font-bold">85% (स्थिर तेज़)</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant">अपेक्षित मंडी भाव</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">₹5,440 / Q</span>
+</div>
+</div>
+</div>
+<!-- Rank #3: Wheat PBW 824 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs transition-all hover:shadow-md">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-space-sm">
+<span class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-bold font-label-md text-label-md">#3</span>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">गेहूं (Wheat - PBW 824)</h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold">आपकी वर्तमान मुख्य फसल (8.5 एकड़)</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md text-primary font-bold">₹36,000</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">अनुमानित शुद्ध लाभ / एकड़</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 bg-surface-container-low p-space-sm rounded-lg mt-1">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">पानी मांग (Water)</span>
+<span class="font-label-md text-label-md text-primary font-bold flex items-center gap-0.5">💧💧💧 <span class="font-normal text-on-surface-variant">(4 सिंचाई)</span></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">सुरक्षा स्तर</span>
+<span class="font-label-md text-label-md text-primary font-bold">100% MSP गारंटी</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant">सरकारी MSP मूल्य</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">₹2,275 / Q</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Action Hub (Touch-Friendly High-Affordance Tiles) -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">grid_view</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">त्वरित किसान कार्य केंद्र (Quick Action Hub)</h2>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">1-टैप सहायता व सेवाएँ</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Action 1: Labour & Tractor -->
+<a class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container flex flex-col justify-between gap-space-md transition-all group" href="#">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-on-primary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[26px]">agriculture</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">लुधियाना FPO</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface group-hover:text-primary transition-colors">🚜 मज़दूर व ट्रैक्टर बुक करें</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Combine Harvester, Seeder &amp; Field Labour</div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-primary font-bold">
+<span class="">8 मशीनें उपलब्ध</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</a>
+<!-- Action 2: Mandi Live Rates -->
+<a class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container flex flex-col justify-between gap-space-md transition-all group" href="#">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-on-secondary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[26px]">monitoring</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">लाइव e-NAM</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface group-hover:text-secondary transition-colors">📈 लाइव मंडी भाव देखें</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">खन्ना, जालंधर, मोगा व समराला अनाज मंडी</div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-secondary font-bold">
+<span class="">गेहूं: ₹2,340/Q (तेज़)</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</a>
+<!-- Action 3: Agronomist Call -->
+<a class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container flex flex-col justify-between gap-space-md transition-all group" href="tel:18001801551">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-tertiary flex items-center justify-center text-on-tertiary group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[26px]">support_agent</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">निःशुल्क कॉल</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface group-hover:text-tertiary transition-colors">👨‍🔬 कृषि वैज्ञानिक से बात</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">टोल-फ्री हेल्पलाइन: 1800-180-1551 (PAU Expert)</div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-tertiary font-bold">
+<span class="">सीधी वॉइस कॉल करें</span>
+<span class="material-symbols-outlined text-[18px]">call</span>
+</div>
+</a>
+<!-- Action 4: Kisan Mitra AI -->
+<button class="p-space-md rounded-xl bg-primary hover:bg-primary-container text-on-primary flex flex-col justify-between gap-space-md text-left transition-all group shadow-md" onclick="openVoiceModal()" type="button">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed text-on-primary-fixed flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[26px]">mic</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-bright/20 text-on-primary font-label-sm text-label-sm font-semibold">हिंदी व ਪੰਜਾਬੀ</span>
+</div>
+<div>
+<div class="font-title-md text-title-md font-bold">🎤 किसान मित्र AI से पूछें</div>
+<div class="font-label-sm text-label-sm opacity-90 mt-0.5">अपनी भाषा में बोलकर समस्या का निदान पाएं</div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm font-semibold opacity-95">
+<span class="">माइक दबाकर बोलें</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Docked Voice Assistant Bar (Kisan Mitra AI) -->
+<div class="w-full bg-surface-container-lowest p-space-md rounded-xl shadow-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openVoiceModal()">
+<span class="material-symbols-outlined text-[28px]">mic</span>
+</div>
+<span class="animate-ping absolute inline-flex h-14 w-14 rounded-full bg-primary opacity-25 pointer-events-none"></span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-primary font-bold">किसान मित्र AI वॉयस असिस्टेंट</span>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">ऑनलाइन</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          "बोलकर पूछें: 'क्या आज शाम बारिश होगी?' या 'यूरिया कब डालना सही रहेगा?'" (हिंदी, Punjabi, English)
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full md:w-auto">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md flex items-center gap-2 transition-colors" onclick="speakText('नमस्ते रमेश जी, किसान मित्र सक्रिय है। आप अपनी स्थानीय भाषा में खेती का कोई भी सवाल पूछ सकते हैं।')" type="button">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+<span class="">डेमो आवाज़</span>
+</button>
+<button class="w-full sm:w-auto px-space-lg py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md flex items-center justify-center gap-2 shadow-sm transition-all" onclick="openVoiceModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+<span class="">बोलना शुरू करें</span>
+</button>
+</div>
+</div>
+<!-- Voice Assistant Interactive Modal Overlay (Hidden by Default) -->
+<div class="fixed inset-0 bg-inverse-surface/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-space-md" id="voiceModal">
+<div class="w-full max-w-lg bg-surface-container-lowest rounded-2xl p-space-xl shadow-2xl flex flex-col items-center text-center relative">
+<button class="absolute top-space-md right-space-md w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high" onclick="closeVoiceModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xl mb-space-md animate-pulse">
+<span class="material-symbols-outlined text-[40px]">mic</span>
+</div>
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">किसान मित्र AI सुन रहा है...</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">आपकी आवाज़ सुनी जा रही है</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-sm">
+        "गेहूं की फसल में यूरिया कब डालूं?" बोलें अथवा नीचे दिए गए त्वरित विकल्पों पर टैप करें।
+      </p>
+<div class="w-full flex flex-col gap-space-xs mt-space-lg text-left">
+<button class="w-full p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-between text-on-surface font-title-md text-title-md transition-colors" onclick="handleVoiceQuery('बारिश कब तक रुकेगी?')" type="button">
+<span class="">🌧️ "बारिश कब तक रुकेगी?"</span>
+<span class="material-symbols-outlined text-primary text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-between text-on-surface font-title-md text-title-md transition-colors" onclick="handleVoiceQuery('खन्ना मंडी में गेहूं का भाव क्या है?')" type="button">
+<span class="">🌾 "खन्ना मंडी में गेहूं का आज का भाव?"</span>
+<span class="material-symbols-outlined text-primary text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-between text-on-surface font-title-md text-title-md transition-colors" onclick="handleVoiceQuery('क्या कल सिंचाई कर सकते हैं?')" type="button">
+<span class="">💧 "क्या कल गेहूं में सिंचाई कर सकते हैं?"</span>
+<span class="material-symbols-outlined text-primary text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="w-full mt-space-md p-space-sm rounded-lg bg-surface-container hidden text-left font-body-md text-body-md text-primary font-semibold" id="voiceResponseBox">
+<span class="material-symbols-outlined text-[18px] align-middle mr-1">smart_toy</span>
+<span id="voiceResponseText"></span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function speakText(text) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'hi-IN';
+      utterance.rate = 0.95;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+    } else {
+      alert("ऑडियो: " + text);
+    }
+  }
+
+  function playFullAdvisoryAudio() {
+    speakText("राम-राम रमेश जी। आज लुधियाना में 4 घंटे में 45 मिलीमीटर बारिश का अलर्ट है। यूरिया छिड़काव स्थगित रहने से आपके ₹1,400 बचे हैं। ट्यूबवेल बंद रखें और नाली की सफाई सुनिश्चित करें।");
+  }
+
+  function triggerSimulation(type) {
+    const weatherCard = document.getElementById('weatherCard');
+    if (!weatherCard) return;
+
+    if (type === 'sunny') {
+      speakText('सिम्युलेटर: धूप व साफ़ मौसम सक्रिय। तापमान 32 डिग्री सेल्सियस, बारिश की संभावना 0 प्रतिशत।');
+      alert("☀️ साफ़ मौसम सिम्युलेट किया गया: सिंचाई स्लॉट सक्रिय किए गए।");
+    } else if (type === 'rain') {
+      speakText('सिम्युलेटर: भारी तूफ़ान व बारिश अलर्ट सक्रिय। 45 मिलीमीटर वर्षा अपेक्षित। यूरिया छिड़काव स्थगित।');
+      alert("🌧️ भारी बारिश सिम्युलेट की गई: ₹1,400 खाद बचत सुरक्षित!");
+    } else if (type === 'dry_soil') {
+      speakText('सिम्युलेटर: सूखी मिट्टी 15 प्रतिशत अलार्म। ड्रिप अथवा हल्की सिंचाई की तत्काल आवश्यकता।');
+      alert("💧 सूखी मिट्टी (15%) अलर्ट: जड़ क्षेत्र में नमी कम है।");
+    }
+  }
+
+  function openVoiceModal() {
+    const modal = document.getElementById('voiceModal');
+    if (modal) modal.classList.remove('hidden');
+    speakText('किसान मित्र सुन रहा है। कृपया अपना सवाल पूछें।');
+  }
+
+  function closeVoiceModal() {
+    const modal = document.getElementById('voiceModal');
+    if (modal) modal.classList.add('hidden');
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+  }
+
+  function handleVoiceQuery(query) {
+    const respBox = document.getElementById('voiceResponseBox');
+    const respText = document.getElementById('voiceResponseText');
+    if (!respBox || !respText) return;
+
+    let reply = "आपकी फसल स्वस्थ है।";
+    if (query.includes('बारिश')) {
+      reply = "मौसम अलर्ट: आज शाम 6 बजे तक 45mm बारिश होगी, इसके बाद मौसम साफ़ होने की संभावना है।";
+    } else if (query.includes('भाव')) {
+      reply = "खन्ना अनाज मंडी में आज गेहूं PBW का औसत भाव ₹2,340 प्रति क्विंटल है, जो कल से ₹25 तेज है।";
+    } else if (query.includes('सिंचाई')) {
+      reply = "आज व कल सिंचाई बिल्कुल न करें। वर्षा का पानी टिलरिंग चरण के लिए पर्याप्त रहेगा।";
+    }
+
+    respText.innerText = reply;
+    respBox.classList.remove('hidden');
+    speakText(reply);
+  }
+</script></main><footer class="w-full bg-surface-container py-space-md px-gutter-desktop shadow-[0_-1px_6px_rgba(43,29,18,0.03)]"><div class="w-full flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex flex-wrap items-center gap-space-lg"><div class="flex items-center gap-space-xs font-label-md text-label-md text-primary font-semibold"><span class="material-symbols-outlined text-[20px]">percent</span><span class="">0% बिचौलिया कमीशन</span></div><div class="h-4 w-[1px] bg-outline-variant hidden sm:block"></div><div class="flex items-center gap-space-xs font-label-md text-label-md text-secondary font-semibold"><span class="material-symbols-outlined text-[20px]">account_balance</span><span class="">सीधा बैंक खाता भुगतान</span></div><div class="h-4 w-[1px] bg-outline-variant hidden sm:block"></div><div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface font-semibold"><span class="material-symbols-outlined text-[20px] text-primary">security</span><span class="">ICICI एस्क्रो सुरक्षा गारंटी</span></div></div><div class="font-label-sm text-label-sm text-on-surface-variant">© 2025 KisaanSahyog (किसान सहयोग). सर्व अधिकार सुरक्षित।</div></div></footer></div>
+
+</body></html>

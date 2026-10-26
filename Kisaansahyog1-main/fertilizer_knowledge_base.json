@@ -1,0 +1,650 @@
+{
+  "_meta": {
+    "name": "Smart Agriculture Copilot - Fertilizer & Regional Soil Knowledge Base",
+    "version": "1.0",
+    "created": "2026-10-24",
+    "country": "India",
+    "purpose": "Ground truth for the AI advisor: maps region -> soil type -> well-known fertilizers/amendments -> crop-wise nutrient doses. The AI must answer only from this file plus live weather/soil-moisture data and any soil-test values the farmer provides.",
+    "units": {
+      "area": "Doses are stored per hectare (ha). 1 ha = 2.471 acre. Bigha size differs by state, so ask the farmer or use a local conversion.",
+      "nutrients": "N = nitrogen, P2O5 = phosphate, K2O = potash, S = sulphur, Zn = zinc, B = boron. Doses are NUTRIENT kg, not fertilizer kg.",
+      "bag_sizes_kg": {"urea": 45, "dap": 50, "mop": 50, "ssp": 50, "npk_complex": 50, "nps": 50, "ammonium_sulphate": 50}
+    },
+    "confidence_legend": {
+      "high": "Cross-checked against ICAR / ICAR-journal / government-institute sources during compilation.",
+      "medium": "Standard state agricultural university package-of-practices style ranges; not individually re-verified. Treat as indicative."
+    },
+    "disclaimer": "Indicative guidance only. Real doses depend on a soil test (Soil Health Card), crop variety, irrigation, yield target and state recommendations. Always advise the farmer to confirm with the local KVK / agriculture department. Brand names are examples of widely available products, not endorsements; availability varies by state and season.",
+    "sources": [
+      "https://pub.isa-india.in/index.php/ija/article/download/4174/3849 (Site-specific NPK in wheat, Indian J. Agronomy)",
+      "https://epubs.icar.org.in/index.php/JSWC/article/view/111055 (Wheat NPK, eastern UP trial)",
+      "https://pub.isa-india.in/index.php/ija/article/download/3499/3184 (Maize-wheat fertilizer response, 120:60:40)",
+      "https://api.hub.ifdc.org/server/api/core/bitstreams/1b2d5ead-485f-414a-97d0-2f63f248c8e8/content (Assam rice/mustard doses)",
+      "https://en.vikaspedia.in/agriculture/agri-inputs/inorganic-inputs/nano-urea (IFFCO Nano Urea usage)",
+      "https://www.global-agriculture.com/crop-nutrition/a-boon-for-superior-plant-nutrition-management-and-soil-health-protection-in-modern-agriculture-iffco-nano-fertilizers/ (Nano Urea Plus, Nano DAP)",
+      "https://epubs.icar.org.in/index.php/IJAgS/article/download/90829/36955/232949 (ICAR-CSSRI sodic reclamation)",
+      "https://www.fao.org/fileadmin/user_upload/GSP/INSAS/2nd_meeting/Posters/27_Shiveshwar_Pratap_SINGH.pdf (Calcareous sodic soils, Bihar)",
+      "https://cssri.res.in/PSSU/Publications/Folder%20and%20Bulletins/2023/2023-4%20Reliance%20Folder.pdf (ICAR-CSSRI nutrient schedule for sodic soils)",
+      "https://agritech.tnau.ac.in/agriculture/agri_nutrientmgt_priceoffertilizers.html (TNAU fertilizer grades and manufacturers)",
+      "https://vajiramandravi.com/upsc-exam/soils-of-india/ (ICAR 8-group soil classification summary)",
+      "https://housing.com/news/top-10-fertiliser-companies-in-india (RCF Ujjwala / Suphala brands)",
+      "https://en.pachaiboomi.net/top-15-fertilizer-companies-in-india/ (Coromandel GROMOR, major companies)"
+    ]
+  },
+
+  "ai_usage_rules": [
+    "Identify the farmer's location (state/district) and map it to a soil type using region_hints. If the farmer names their soil in local words (kaali mitti, lal mitti, ooshar/reh, retili mitti) use soil_types[].name_hi. If a soil test or Soil Health Card value is available, it overrides the regional typical values.",
+    "Before recommending, make sure you know: crop, season (kharif/rabi/zaid), irrigated or rainfed, land area, and whether a soil test exists. Ask for what is missing - one question at a time.",
+    "Recommend only fertilizers listed in this file. Use common names (Urea, DAP, MOP, SSP, NPK 12:32:16, etc.). Brands may be mentioned as examples of commonly available products.",
+    "Always convert nutrient doses into fertilizer kg and bags using the conversion rules, and express them per acre (and per bigha only if the farmer gives the local bigha size).",
+    "Always give timing (basal vs top-dress) and one cost-saving tip. For farmers with limited resources use the low_resource_playbook.",
+    "Protect the soil: never advise more than the maximum of the crop range. Prefer split nitrogen, add organic matter on light soils, and use gypsum/zinc/sulphur only where the soil type or soil test indicates a need.",
+    "Nano fertilizers: advise them as a partial replacement of top-dressed urea only. Do not tell farmers to drop the basal dose. Mention that field results vary.",
+    "Never give pesticide or herbicide doses. For safety remind: wear gloves/mask when spraying or handling, keep fertilizers away from children, do not spray in wind or just before rain.",
+    "Never promise yield increases. Say 'can help' and refer to the local KVK / agriculture officer for a soil test.",
+    "Answer in the farmer's language (Hindi/English/regional) in short, simple sentences. Use bags and acres, not scientific terms."
+  ],
+
+  "answer_template": [
+    "1) Your soil (type + one-line meaning)",
+    "2) What to apply for <crop>: fertilizer name -> kg per acre -> bags",
+    "3) When to apply (basal / 1st top-dress / 2nd top-dress)",
+    "4) Soil fix needed? (zinc, gypsum, lime, organic manure) - only if relevant",
+    "5) Low-cost option if resources are limited",
+    "6) One caution + suggestion to confirm with soil test / KVK"
+  ],
+
+  "conversion_rules": {
+    "formula": "fertilizer_kg = (nutrient_kg_needed / nutrient_percent) * 100",
+    "ha_to_acre": "divide kg/ha by 2.471 to get kg/acre",
+    "order_of_calculation": [
+      "1. Fix the P2O5 dose first using DAP (or SSP / NPK complex).",
+      "2. Subtract the nitrogen supplied by DAP (DAP kg x 0.18) from the total N dose.",
+      "3. Supply the remaining N from Urea.",
+      "4. Supply K2O from MOP (or SOP for chloride-sensitive crops).",
+      "5. Add S, Zn, B only where indicated."
+    ],
+    "worked_example_wheat_150_60_40_per_ha": {
+      "P2O5_60_from_DAP_46pct": "130 kg DAP/ha (about 53 kg/acre)",
+      "N_from_DAP": "23.5 kg N",
+      "remaining_N": "126.5 kg N -> 275 kg Urea/ha (about 111 kg/acre)",
+      "K2O_40_from_MOP_60pct": "67 kg MOP/ha (about 27 kg/acre)"
+    }
+  },
+
+  "fertilizers": [
+    {
+      "id": "urea", "name": "Urea", "name_hi": "यूरिया", "category": "straight nitrogen",
+      "nutrient_percent": {"N": 46},
+      "bag_kg": 45,
+      "role": "Main nitrogen source for cereals, sugarcane, vegetables. Urea sold in India is neem-coated.",
+      "how_to_apply": "Top-dress in 2-3 splits on moist soil; do not apply on standing water or just before heavy rain.",
+      "cautions": [
+        "Large nitrogen losses (ammonia) on alkaline/sodic soils and when broadcast on dry hot soil.",
+        "Over-use gives soft, lodging-prone plants and pest attack; do not exceed crop dose."
+      ],
+      "known_brands": ["IFFCO Urea", "KRIBHCO Urea", "NFL Urea", "RCF Ujjwala", "Chambal Urea", "Coromandel GROMOR Urea"]
+    },
+    {
+      "id": "dap", "name": "DAP (Di-Ammonium Phosphate)", "name_hi": "डीएपी", "category": "phosphatic (N+P)",
+      "nutrient_percent": {"N": 18, "P2O5": 46},
+      "bag_kg": 50,
+      "role": "Basal phosphorus plus starter nitrogen. Second most used fertilizer in India after urea.",
+      "how_to_apply": "Basal, placed in the seed furrow below/beside the seed (seed drill) or broadcast and mixed before sowing.",
+      "cautions": ["Do not let DAP touch the seed directly (ammonia burn).", "On black and calcareous soils phosphorus gets fixed - place it near roots rather than broadcasting."],
+      "known_brands": ["IFFCO DAP", "KRIBHCO DAP", "NFL DAP", "Coromandel GROMOR DAP", "Chambal DAP", "Paradeep Phosphates DAP"]
+    },
+    {
+      "id": "mop", "name": "MOP (Muriate of Potash)", "name_hi": "म्यूरेट ऑफ पोटाश (MOP / पोटाश)", "category": "potassic",
+      "nutrient_percent": {"K2O": 60},
+      "bag_kg": 50,
+      "role": "Potassium for potato, sugarcane, vegetables, fruits, and for rice-wheat fields where potassium is being mined.",
+      "how_to_apply": "Basal, mixed in soil. For sandy soils split half basal, half at top-dressing.",
+      "cautions": ["Contains chloride - for chloride-sensitive crops (tobacco, grapes, quality potato) and saline soils prefer SOP.", "Black soils are usually high in potassium - apply only if soil test shows low K."],
+      "known_brands": ["IFFCO MOP", "IPL (Indian Potash Ltd) MOP", "Coromandel MOP"]
+    },
+    {
+      "id": "ssp", "name": "SSP (Single Super Phosphate)", "name_hi": "सिंगल सुपर फॉस्फेट (SSP)", "category": "phosphatic with sulphur",
+      "nutrient_percent": {"P2O5": 16, "S": 11, "Ca": 19},
+      "bag_kg": 50,
+      "role": "Phosphorus plus sulphur and calcium. Best for oilseeds (mustard, groundnut, soybean), pulses and sulphur-deficient soils.",
+      "how_to_apply": "Basal. Does not supply nitrogen, so pair with urea.",
+      "cautions": ["Bulkier than DAP - more bags needed per kg of P2O5."],
+      "known_brands": ["IFFCO SSP", "Coromandel GROMOR SSP", "Paradeep SSP"]
+    },
+    {
+      "id": "npk_10_26_26", "name": "NPK 10:26:26", "name_hi": "एनपीके 10:26:26", "category": "complex",
+      "nutrient_percent": {"N": 10, "P2O5": 26, "K2O": 26},
+      "bag_kg": 50,
+      "role": "High phosphorus + potassium. Used basal for potato, cotton, groundnut, pulses, vegetables and for root/flower development.",
+      "how_to_apply": "Basal; top up nitrogen with urea.",
+      "cautions": ["Check that total P2O5 and K2O supplied do not exceed the crop range."],
+      "known_brands": ["IFFCO NPK 10:26:26", "KRIBHCO NPK 10:26:26", "RCF NPK 10:26:26", "Coromandel GROMOR 10:26:26"]
+    },
+    {
+      "id": "npk_12_32_16", "name": "NPK 12:32:16", "name_hi": "एनपीके 12:32:16", "category": "complex",
+      "nutrient_percent": {"N": 12, "P2O5": 32, "K2O": 16},
+      "bag_kg": 50,
+      "role": "High phosphorus grade for good early root growth and flowering - cereals, pulses, oilseeds, vegetables.",
+      "how_to_apply": "Basal; top up nitrogen with urea.",
+      "cautions": ["On potassium-rich black soils there may be no need for the extra K."],
+      "known_brands": ["IFFCO NPK 12:32:16", "KRIBHCO NPK 12:32:16", "RCF NPK 12:32:16", "Coromandel GROMOR 12:32:16"]
+    },
+    {
+      "id": "npk_15_15_15", "name": "NPK 15:15:15 (balanced)", "name_hi": "एनपीके 15:15:15", "category": "complex",
+      "nutrient_percent": {"N": 15, "P2O5": 15, "K2O": 15},
+      "bag_kg": 50,
+      "role": "All-purpose balanced fertilizer for vegetables, fruits and general crops.",
+      "how_to_apply": "Basal or at early growth stage.",
+      "cautions": ["Lower nutrient density; costs more per kg of nutrient than straight fertilizers."],
+      "known_brands": ["RCF Suphala"]
+    },
+    {
+      "id": "nps_20_20_0_13", "name": "NPS 20:20:0:13 (Ammonium Phosphate Sulphate)", "name_hi": "एनपीएस 20:20:0:13", "category": "complex with sulphur",
+      "nutrient_percent": {"N": 20, "P2O5": 20, "S": 13},
+      "bag_kg": 50,
+      "role": "Nitrogen + phosphorus + sulphur in one bag. Good for mustard, soybean, groundnut, pulses and sulphur-deficient fields.",
+      "how_to_apply": "Basal.",
+      "cautions": ["No potassium - add MOP where potash is needed."],
+      "known_brands": ["IFFCO NPKS 20:20:0:13", "KRIBHCO 20:20:0:13", "RCF 20:20:0:13", "Coromandel GROMOR 20:20:0:13"]
+    },
+    {
+      "id": "npk_19_19_19_ws", "name": "NPK 19:19:19 (water soluble)", "name_hi": "एनपीके 19:19:19 (पानी में घुलनशील)", "category": "water-soluble complex",
+      "nutrient_percent": {"N": 19, "P2O5": 19, "K2O": 19},
+      "bag_kg": null,
+      "role": "For drip/fertigation and foliar sprays in vegetables, fruits, flowers - quick correction during stress.",
+      "how_to_apply": "Fertigation or foliar spray at label rate (commonly about 0.5%, i.e. 5 g per litre for foliar).",
+      "cautions": ["Costly for field crops; use only for high-value crops or as a stress-recovery spray."],
+      "known_brands": ["IFFCO Water Soluble NPK", "Coromandel GROMOR 19:19:19"]
+    },
+    {
+      "id": "ammonium_sulphate", "name": "Ammonium Sulphate", "name_hi": "अमोनियम सल्फेट", "category": "nitrogen with sulphur",
+      "nutrient_percent": {"N": 20.6, "S": 24},
+      "bag_kg": 50,
+      "role": "Nitrogen + sulphur. Preferred over urea on alkaline/sodic soils and for rice, mustard, onion on sulphur-poor soils.",
+      "how_to_apply": "Basal or top-dress in splits.",
+      "cautions": ["Acidifies soil - avoid repeated heavy use on acidic soils (red/laterite/hill)."],
+      "known_brands": ["RCF Ammonium Sulphate", "IFFCO Ammonium Sulphate"]
+    },
+    {
+      "id": "sop", "name": "SOP (Sulphate of Potash)", "name_hi": "सल्फेट ऑफ पोटाश (SOP)", "category": "potassic with sulphur",
+      "nutrient_percent": {"K2O": 50, "S": 18},
+      "bag_kg": 50,
+      "role": "Chloride-free potassium + sulphur for potato quality, fruits, vegetables, tobacco and saline soils.",
+      "how_to_apply": "Basal.",
+      "cautions": ["More expensive than MOP - use mainly where chloride is a problem."],
+      "known_brands": ["IPL SOP", "Coromandel SOP"]
+    },
+    {
+      "id": "zinc_sulphate", "name": "Zinc Sulphate", "name_hi": "जिंक सल्फेट", "category": "micronutrient",
+      "nutrient_percent": {"Zn": 21, "note": "21% as heptahydrate; 33% as monohydrate - check the bag"},
+      "bag_kg": null,
+      "role": "Corrects zinc deficiency, which is widespread in Indian soils - important for rice, wheat, maize, sodic and calcareous soils.",
+      "how_to_apply": "Soil: about 25 kg/ha (21% grade) once, usually before rice; residual effect lasts into the next crop. Foliar: 0.5% solution (5 g per litre) with 0.25% lime at deficiency symptoms.",
+      "cautions": ["Do not mix directly with phosphate fertilizers before application; mix with dry soil/sand and broadcast.", "Do not overdose - repeat only on soil-test or symptom evidence."],
+      "known_brands": ["IFFCO Zinc Sulphate", "Coromandel Zinc Sulphate", "Tata Chemicals Zinc Sulphate"]
+    },
+    {
+      "id": "borax", "name": "Borax / Boron", "name_hi": "बोरेक्स / बोरॉन", "category": "micronutrient",
+      "nutrient_percent": {"B": 10},
+      "bag_kg": null,
+      "role": "Boron for flowering and pod/fruit set; deficient in calcareous alluvium (Bihar, eastern UP), red/laterite soils; important for mustard, potato, vegetables, cauliflower, groundnut.",
+      "how_to_apply": "Soil: about 5-10 kg borax/ha on deficient soils. Foliar: very dilute (about 0.1-0.2%).",
+      "cautions": ["Safe range is narrow - boron overdose is toxic. Use only where deficiency is known or visible."],
+      "known_brands": ["IFFCO Boron", "Coromandel Borax"]
+    },
+    {
+      "id": "gypsum", "name": "Gypsum", "name_hi": "जिप्सम", "category": "secondary nutrient / soil amendment",
+      "nutrient_percent": {"S": 15, "Ca": 22, "note": "typical; varies with purity"},
+      "bag_kg": null,
+      "role": "(a) Sulphur and calcium source for oilseeds, pulses and groundnut; (b) main amendment for reclaiming sodic (ooshar/reh) soils.",
+      "how_to_apply": "Sulphur use: about 200-250 kg/ha for oilseeds/pulses. Groundnut: about 250-500 kg/ha at pegging/flowering. Sodic reclamation: dose from soil test as 'gypsum requirement (GR)' - common practice 50% of GR; research supports 25% of GR with organic manure/pressmud and salt-tolerant varieties.",
+      "cautions": ["For sodic soils always test first; incorporate and irrigate/leach with good-quality water.", "Not a substitute for lime on strongly acidic soils."],
+      "known_brands": ["Aravali Gypsum", "State agriculture department subsidised gypsum"]
+    },
+    {
+      "id": "pyrite", "name": "Pyrite (iron pyrite)", "name_hi": "पायराइट", "category": "soil amendment",
+      "nutrient_percent": {},
+      "bag_kg": null,
+      "role": "Amendment for CALCAREOUS sodic soils (e.g., parts of Bihar), where it can work better than gypsum alone.",
+      "how_to_apply": "Dose from soil test via KVK/soil lab; incorporate in surface soil.",
+      "cautions": ["Needs oxidation in the soil; use only on advice from soil lab / agriculture university."],
+      "known_brands": []
+    },
+    {
+      "id": "agri_lime", "name": "Agricultural Lime / Dolomite", "name_hi": "चूना (कृषि चूना) / डोलोमाइट", "category": "soil amendment",
+      "nutrient_percent": {"Ca": 30, "note": "dolomite also supplies Mg"},
+      "bag_kg": null,
+      "role": "Raises pH of acidic soils (laterite, red, hill/forest, acid Assam/Kerala soils); frees phosphorus; dolomite also corrects magnesium deficiency.",
+      "how_to_apply": "Dose follows the soil's lime requirement (indicative 2-5 t/ha on strongly acid soils; split over years). Apply 2-3 weeks before sowing and mix into soil. Target pH about 6-6.5.",
+      "cautions": ["Do not apply on neutral/alkaline soils.", "Do not apply on the same day as urea/ammonium fertilizers."],
+      "known_brands": ["Dolomite / agricultural lime from local suppliers (state agriculture department)"]
+    },
+    {
+      "id": "fym_compost", "name": "Farmyard Manure (FYM) / Compost", "name_hi": "गोबर की खाद / कम्पोस्ट", "category": "organic",
+      "nutrient_percent": {"note": "low and variable nutrient content; main value is organic matter, water holding and microbial life"},
+      "bag_kg": null,
+      "role": "Rebuilds soil organic carbon; essential on red, laterite, light/sandy and arid soils and in rice-wheat fields.",
+      "how_to_apply": "Well-decomposed, about 5-10 t/ha (2-4 t/acre) mixed into soil 2-3 weeks before sowing. Can reduce chemical fertilizer need over time.",
+      "cautions": ["Use only well-decomposed manure (fresh manure can burn seedlings and bring weeds/termites)."],
+      "known_brands": []
+    },
+    {
+      "id": "vermicompost", "name": "Vermicompost", "name_hi": "वर्मीकम्पोस्ट (केंचुआ खाद)", "category": "organic",
+      "nutrient_percent": {"note": "nutrient-rich compost; use smaller quantity than FYM"},
+      "bag_kg": null,
+      "role": "Concentrated organic manure for vegetables, fruits and nursery beds.",
+      "how_to_apply": "About 2-5 t/ha (1-2 t/acre) mixed in soil at sowing/planting.",
+      "cautions": [],
+      "known_brands": []
+    },
+    {
+      "id": "pressmud", "name": "Pressmud (sugar-mill by-product)", "name_hi": "प्रेसमड", "category": "organic amendment",
+      "nutrient_percent": {"note": "organic matter, some P and Ca"},
+      "bag_kg": null,
+      "role": "Used with gypsum to cut the cost of sodic soil reclamation; useful near sugar-mill regions.",
+      "how_to_apply": "About 10 t/ha along with reduced gypsum (e.g., Bihar calcareous sodic trials).",
+      "cautions": ["Use decomposed pressmud."],
+      "known_brands": []
+    },
+    {
+      "id": "biofertilizers", "name": "Biofertilizers (Rhizobium, PSB, Azotobacter/Azospirillum, KMB)", "name_hi": "जैव उर्वरक (राइजोबियम, पीएसबी, एज़ोटोबैक्टर)", "category": "bio",
+      "nutrient_percent": {},
+      "bag_kg": null,
+      "role": "Rhizobium for pulses/soybean/groundnut (fixes nitrogen); PSB makes soil phosphorus available; Azotobacter/Azospirillum for cereals and vegetables.",
+      "how_to_apply": "Seed treatment before sowing - follow the dose printed on the packet; dry in shade.",
+      "cautions": ["Check expiry date; do not mix with chemical seed treatment at the same time (treat fungicide first, dry, then biofertilizer)."],
+      "known_brands": ["IFFCO biofertilizers", "State agriculture university / KVK biofertilizer packets"]
+    },
+    {
+      "id": "green_manure", "name": "Green manure (Dhaincha / Sunhemp)", "name_hi": "हरी खाद (ढैंचा / सनई)", "category": "organic",
+      "nutrient_percent": {},
+      "bag_kg": null,
+      "role": "Adds nitrogen and organic matter before rice; helps in sodic soil reclamation.",
+      "how_to_apply": "Sow before the season and plough in at about 45-50 days (flowering).",
+      "cautions": ["Needs 6-8 weeks of field time before the main crop."],
+      "known_brands": []
+    },
+    {
+      "id": "nano_urea", "name": "Nano Urea (liquid) / Nano Urea Plus", "name_hi": "नैनो यूरिया (तरल)", "category": "nano liquid nitrogen",
+      "nutrient_percent": {"N": 4, "note": "Nano Urea = 4% N (w/v); Nano Urea Plus = 20% N (w/v)"},
+      "bag_kg": null,
+      "role": "Foliar nitrogen spray. One 500 ml bottle is positioned as equivalent to one 45 kg bag of urea. Reduces part of the top-dressed urea.",
+      "how_to_apply": "Mix 2-4 ml per litre of water and spray on leaves. Usually 2 sprays: 1st at active tillering/branching (30-35 days after germination or 20-25 days after transplanting), 2nd about 20-25 days later or before flowering. Typical volume 250-500 ml product per acre. Spray in morning/evening, avoid dew; repeat if rain falls within 12 hours.",
+      "cautions": ["Do NOT cut the basal nitrogen from DAP/complex fertilizers - cut only part of the top-dress urea.", "Some trials (e.g., Punjab wheat) reported lower yield when nano urea replaced the full urea dose - advise partial replacement.", "Foliar only - not for soil application."],
+      "known_brands": ["IFFCO Nano Urea", "IFFCO Nano Urea Plus", "Nano Urea (liquid) from NFL / RCF under licence"]
+    },
+    {
+      "id": "nano_dap", "name": "Nano DAP (liquid)", "name_hi": "नैनो डीएपी (तरल)", "category": "nano liquid phosphorus",
+      "nutrient_percent": {"N": 8, "P2O5": 16, "note": "w/v liquid"},
+      "bag_kg": null,
+      "role": "Liquid N + P for seed treatment and foliar spray; can reduce part of the conventional DAP dose.",
+      "how_to_apply": "Foliar: about 250-500 ml per acre per spray in water at critical stages. Seed/root treatment as per label.",
+      "cautions": ["Use as a supplement; do not skip the basal phosphorus on P-deficient soils unless a soil test supports it."],
+      "known_brands": ["IFFCO Nano DAP"]
+    }
+  ],
+
+  "soil_types": [
+    {
+      "id": "alluvial", "name": "Alluvial soil", "name_hi": "जलोढ़ मिट्टी (दोमट/बलुई दोमट)",
+      "share_of_india_percent": 43,
+      "regions": ["Uttar Pradesh", "Punjab", "Haryana", "Bihar", "West Bengal", "Assam valley", "Delhi", "North Gujarat", "Deltas of Odisha, Andhra Pradesh, Tamil Nadu"],
+      "sub_types": ["Khadar - newer floodplain alluvium, more fertile", "Bhangar - older alluvium, more kankar/lime nodules, less fertile"],
+      "typical_ph": "6.5-8.5 (neutral to alkaline; calcareous in parts of Bihar, eastern UP, Haryana)",
+      "texture_and_water": "Loam to sandy loam to clay loam; medium water holding; good drainage",
+      "nutrient_status": {
+        "nitrogen": "low", "phosphorus": "low to medium", "potassium": "medium - falling under intensive rice-wheat",
+        "organic_carbon": "low", "sulphur": "low to medium", "zinc": "low (widespread)", "boron": "low in calcareous alluvium", "iron": "adequate; deficiency in high-pH calcareous patches"
+      },
+      "main_problems": ["Low nitrogen and organic matter", "Zinc and sulphur deficiency in rice-wheat belt", "Potassium mining by wheat/rice/sugarcane", "Sodic (ooshar/usar) and saline patches in UP, Punjab, Haryana"],
+      "strategy": ["Balanced N-P-K with N in 2-3 splits", "Add zinc sulphate before rice (once in 2-3 seasons if deficient)", "Add sulphur (SSP/gypsum/NPS) for mustard, pulses", "Return crop residue / FYM / green manure to rebuild organic carbon"],
+      "recommended_fertilizers": [
+        {"id": "urea", "role": "Main N source, split 2-3 times"},
+        {"id": "dap", "role": "Basal P + starter N"},
+        {"id": "mop", "role": "Potash for potato, sugarcane and long-running rice-wheat fields"},
+        {"id": "zinc_sulphate", "role": "Zinc correction before rice/maize"},
+        {"id": "ssp", "role": "P + sulphur for mustard, pulses, vegetables"},
+        {"id": "nps_20_20_0_13", "role": "N + P + S basal for oilseeds/pulses"},
+        {"id": "npk_12_32_16", "role": "Basal complex for wheat/pulses/oilseeds"},
+        {"id": "gypsum", "role": "Sulphur source; reclamation where sodic patches exist"},
+        {"id": "borax", "role": "Only in boron-deficient calcareous soils"},
+        {"id": "nano_urea", "role": "Replace part of top-dress urea to cut cost/losses"},
+        {"id": "fym_compost", "role": "Organic carbon"},
+        {"id": "green_manure", "role": "Dhaincha/sunhemp before rice"}
+      ],
+      "avoid_or_caution": ["Urea broadcast on dry soil or before heavy rain (N loss)", "Heavy chloride (MOP) for chloride-sensitive potato quality"],
+      "suited_crops": ["wheat", "rice", "maize", "sugarcane", "mustard", "potato", "pulses", "vegetables"]
+    },
+    {
+      "id": "black", "name": "Black soil (Regur / black cotton soil)", "name_hi": "काली मिट्टी (रेगुर)",
+      "share_of_india_percent": 16,
+      "regions": ["Maharashtra (Deccan, Vidarbha, Marathwada)", "Madhya Pradesh (Malwa, Narmada valley)", "Gujarat (Saurashtra, south)", "North Karnataka", "Telangana and Andhra Pradesh (parts)", "Tamil Nadu (Coimbatore-Madurai belts)"],
+      "sub_types": [],
+      "typical_ph": "7.5-8.5 (neutral to alkaline, calcareous)",
+      "texture_and_water": "Heavy clay; very high water holding; swells when wet, cracks when dry; poor drainage/waterlogging risk",
+      "nutrient_status": {
+        "nitrogen": "low", "phosphorus": "low (and fixed by lime)", "potassium": "medium to high", "organic_carbon": "low",
+        "sulphur": "low", "zinc": "low", "calcium_magnesium": "high", "iron": "can be deficient (chlorosis)"
+      },
+      "main_problems": ["Low N, P and organic matter", "Zinc and sulphur deficiency", "Waterlogging in heavy rain; hard to work when wet or dry", "Phosphorus locked up by calcium"],
+      "strategy": ["Place phosphorus near the roots (seed drill) instead of broadcasting", "Split nitrogen; avoid heavy doses before heavy rain", "Skip or reduce potash unless soil test is low", "Apply zinc sulphate and sulphur (SSP/gypsum) for cotton, soybean, oilseeds"],
+      "recommended_fertilizers": [
+        {"id": "dap", "role": "Basal P placed in seed furrow"},
+        {"id": "ssp", "role": "P + S for soybean, groundnut, pulses"},
+        {"id": "urea", "role": "N in splits"},
+        {"id": "nps_20_20_0_13", "role": "N + P + S for soybean/cotton basal"},
+        {"id": "zinc_sulphate", "role": "Zinc for cotton, soybean, sorghum, wheat"},
+        {"id": "gypsum", "role": "Sulphur/calcium for oilseeds"},
+        {"id": "npk_19_19_19_ws", "role": "Fertigation/foliar for cotton, vegetables"},
+        {"id": "nano_urea", "role": "Partial replacement of top-dress urea"},
+        {"id": "biofertilizers", "role": "Rhizobium + PSB for soybean/chickpea/pigeonpea"},
+        {"id": "fym_compost", "role": "Improves structure and nitrogen supply"}
+      ],
+      "avoid_or_caution": ["Routine heavy MOP (potassium is usually adequate)", "Deep broadcast of DAP (fixation)", "Working/fertilizing when soil is waterlogged"],
+      "suited_crops": ["cotton", "soybean", "sorghum", "chickpea", "pigeonpea", "wheat", "sugarcane", "onion", "tomato"]
+    },
+    {
+      "id": "red", "name": "Red (and yellow) soil", "name_hi": "लाल मिट्टी",
+      "share_of_india_percent": 18.5,
+      "regions": ["Tamil Nadu", "Karnataka (south and interior)", "Andhra Pradesh and Telangana", "Odisha", "Chhattisgarh", "Jharkhand", "Eastern Madhya Pradesh", "Bundelkhand (mixed red and black)"],
+      "sub_types": ["Red soils (well drained)", "Yellow soils (where moisture is high)"],
+      "typical_ph": "5.5-7.0 (slightly acidic to neutral)",
+      "texture_and_water": "Light to medium, gravelly/sandy loam; low water holding; drains fast; low CEC",
+      "nutrient_status": {
+        "nitrogen": "low", "phosphorus": "low", "potassium": "low to medium", "organic_carbon": "low",
+        "sulphur": "low", "zinc": "low", "boron": "low", "calcium": "low (poor in lime)"
+      },
+      "main_problems": ["Low organic matter and water holding", "Leaching of nitrogen and potash", "Acidity in wetter areas", "Zinc, boron and sulphur deficiencies"],
+      "strategy": ["Add FYM/compost every year", "Use more but smaller N and K splits (light soil leaches)", "Lime if pH below about 5.5", "Prefer SSP/NPS for P + S; add zinc and boron where deficient"],
+      "recommended_fertilizers": [
+        {"id": "fym_compost", "role": "First priority - builds water holding and nutrient retention"},
+        {"id": "urea", "role": "N in 3 small splits"},
+        {"id": "ssp", "role": "P + S + Ca; good on acidic red soils"},
+        {"id": "dap", "role": "Basal P"},
+        {"id": "mop", "role": "Potash split half basal, half top-dress"},
+        {"id": "zinc_sulphate", "role": "Zinc correction"},
+        {"id": "borax", "role": "Boron where symptoms/soil test show deficiency"},
+        {"id": "agri_lime", "role": "Only if soil is acidic (pH below about 5.5)"},
+        {"id": "gypsum", "role": "Calcium + sulphur for groundnut pegging"},
+        {"id": "biofertilizers", "role": "Rhizobium/PSB for pulses/groundnut"},
+        {"id": "nano_urea", "role": "Partial replacement of top-dress urea"}
+      ],
+      "avoid_or_caution": ["Single heavy dose of urea or MOP (leaches away)", "Repeated ammonium sulphate on acidic patches"],
+      "suited_crops": ["groundnut", "pearl millet", "sorghum", "ragi", "pulses", "cotton", "rice (lowland)", "tobacco", "vegetables"]
+    },
+    {
+      "id": "laterite", "name": "Laterite soil", "name_hi": "लैटेराइट मिट्टी",
+      "share_of_india_percent": 3,
+      "regions": ["Kerala", "Konkan (Maharashtra, Goa)", "Coastal and Malnad Karnataka", "Odisha uplands", "West Bengal (Bankura, Purulia, Birbhum)", "Northeast hills"],
+      "sub_types": [],
+      "typical_ph": "4.5-6.0 (acidic)",
+      "texture_and_water": "Gravelly/sandy clay loam; heavy leaching in high rainfall; low CEC",
+      "nutrient_status": {
+        "nitrogen": "low", "phosphorus": "low (fixed by iron/aluminium)", "potassium": "low", "organic_carbon": "low to medium",
+        "calcium_magnesium": "low", "zinc": "low", "boron": "low"
+      },
+      "main_problems": ["Strong acidity", "Phosphorus fixation", "Leaching of nutrients and lime", "Aluminium/iron toxicity at very low pH"],
+      "strategy": ["Lime first (per soil test), then fertilize", "Use SSP/NPS rather than relying on DAP alone", "Heavy organic manure and mulch", "Split N and K in small doses"],
+      "recommended_fertilizers": [
+        {"id": "agri_lime", "role": "Correct acidity (dolomite if Mg is also low)"},
+        {"id": "fym_compost", "role": "Major organic input"},
+        {"id": "ssp", "role": "P + S + Ca"},
+        {"id": "urea", "role": "N in several small splits"},
+        {"id": "mop", "role": "Potash in splits"},
+        {"id": "borax", "role": "Boron where deficient"},
+        {"id": "zinc_sulphate", "role": "Zinc where deficient"},
+        {"id": "biofertilizers", "role": "PSB helps with locked phosphorus"}
+      ],
+      "avoid_or_caution": ["Ammonium sulphate as the only N source (acidifies further)", "Skipping lime"],
+      "suited_crops": ["coconut", "arecanut", "rubber", "cashew", "tea", "coffee", "tapioca", "rice", "pineapple"]
+    },
+    {
+      "id": "arid", "name": "Arid / desert soil", "name_hi": "रेतीली / मरुस्थलीय मिट्टी",
+      "share_of_india_percent": 4,
+      "regions": ["Western Rajasthan (Jaisalmer, Bikaner, Barmer, Jodhpur)", "Kutch and parts of Saurashtra (Gujarat)", "South-west Haryana and Punjab (Bhiwani, Mahendragarh, Sirsa fringe)"],
+      "sub_types": [],
+      "typical_ph": "8.0-9.0 (alkaline, often calcareous)",
+      "texture_and_water": "Sandy; very low water holding; wind erosion; salinity in patches",
+      "nutrient_status": {
+        "nitrogen": "low", "phosphorus": "low to medium", "potassium": "medium", "organic_carbon": "very low",
+        "zinc": "low", "iron": "low in high-pH patches", "sulphur": "low"
+      },
+      "main_problems": ["Water scarcity - rainfed dose must be lower", "Very low organic matter", "Alkalinity/salinity in patches", "Fertilizer burn risk when moisture is low"],
+      "strategy": ["Match dose to rainfall/irrigation - rainfed crops need low N-P with good manure", "Use FYM/compost and mulching", "Prefer drip + fertigation where water exists", "Sulphur for mustard; zinc/iron where deficient"],
+      "recommended_fertilizers": [
+        {"id": "fym_compost", "role": "Foundation - raises water holding"},
+        {"id": "urea", "role": "Low rainfed doses, apply when soil is moist"},
+        {"id": "ssp", "role": "P + S for mustard, pulses, bajra"},
+        {"id": "dap", "role": "Basal P"},
+        {"id": "zinc_sulphate", "role": "Zinc"},
+        {"id": "gypsum", "role": "Sulphur for oilseeds; sodic patches (after soil test)"},
+        {"id": "ammonium_sulphate", "role": "N + S on alkaline soils"},
+        {"id": "npk_19_19_19_ws", "role": "Fertigation with drip"},
+        {"id": "nano_urea", "role": "Foliar N saves soil-applied urea in dry spells"}
+      ],
+      "avoid_or_caution": ["Heavy urea doses in dry soil (burn and loss)", "Chloride-heavy fertilizers in saline patches - prefer SOP"],
+      "suited_crops": ["pearl millet (bajra)", "guar", "moth bean", "mustard", "cumin", "chickpea", "wheat (irrigated)"]
+    },
+    {
+      "id": "mountain_forest", "name": "Mountain / forest soil", "name_hi": "पहाड़ी / वन मिट्टी",
+      "share_of_india_percent": 8,
+      "regions": ["Himachal Pradesh", "Uttarakhand (hills)", "Jammu & Kashmir", "Sikkim and Northeast hills", "High ranges of the Western Ghats"],
+      "sub_types": [],
+      "typical_ph": "4.5-6.5 (acidic)",
+      "texture_and_water": "Variable, shallow on slopes; high organic matter in forest soils; erosion risk",
+      "nutrient_status": {
+        "nitrogen": "medium (variable)", "phosphorus": "low", "potassium": "medium", "organic_carbon": "high in forest areas, low on eroded slopes",
+        "calcium": "low", "boron": "low (important for apple, vegetables)"
+      },
+      "main_problems": ["Acidity", "Erosion and nutrient loss on slopes", "Low phosphorus"],
+      "strategy": ["Terracing and mulching plus balanced fertilizer", "Lime on very acidic fields", "Apply boron to apple/vegetables where deficient"],
+      "recommended_fertilizers": [
+        {"id": "ssp", "role": "P + S + Ca for acidic hill soils"},
+        {"id": "urea", "role": "Split N"},
+        {"id": "mop", "role": "Potash for potato/apple"},
+        {"id": "agri_lime", "role": "Correct acidity"},
+        {"id": "borax", "role": "Boron for apple/vegetables where deficient"},
+        {"id": "fym_compost", "role": "Organic matter and mulch"},
+        {"id": "npk_15_15_15", "role": "Balanced feed for vegetables/orchards"}
+      ],
+      "avoid_or_caution": ["Broadcasting fertilizer on steep slopes before rain (runoff)"],
+      "suited_crops": ["apple", "potato", "maize", "vegetables", "tea", "terraced rice", "ginger", "large cardamom"]
+    },
+    {
+      "id": "saline_sodic", "name": "Saline / sodic (alkali) soil", "name_hi": "ऊसर / रेह / क्षारीय-लवणीय मिट्टी",
+      "share_of_india_percent": 2,
+      "regions": ["Uttar Pradesh (usar lands, e.g. Raebareli, Sultanpur, Pratapgarh, Unnao belts)", "Punjab and Haryana (patches, Karnal region)", "Bihar (calcareous sodic patches, e.g. Muzaffarpur)", "Gujarat coast and Kutch", "Coastal West Bengal and Odisha (saline)"],
+      "sub_types": ["Saline (high EC, pH below 8.5)", "Sodic/alkali (pH above 8.5, often 9-10.5, poor drainage, white crust)", "Calcareous sodic (e.g. parts of Bihar)"],
+      "typical_ph": "8.5-10.5 for sodic; saline soils may be near neutral but high in salts",
+      "texture_and_water": "Dense, hard when dry, sticky when wet; very low permeability when sodic",
+      "nutrient_status": {
+        "nitrogen": "low (high volatilisation loss)", "phosphorus": "often adequate (Olsen-P can be high in sodic soils)", "potassium": "medium to high",
+        "zinc": "low", "iron": "low", "organic_carbon": "very low"
+      },
+      "main_problems": ["Sodium blocks water and roots", "Poor germination", "Nitrogen loss and zinc/iron deficiency"],
+      "reclamation_protocol": [
+        "1. Test the soil (pH, EC, ESP) at a soil lab / KVK - gypsum requirement (GR) is calculated from it.",
+        "2. Apply gypsum (common practice 50% of GR; research supports 25% of GR combined with pressmud/FYM/green manure and salt-tolerant varieties). Calcareous sodic: consider pyrite or gypsum plus organics on advice.",
+        "3. Mix in surface soil, level, bund and leach with good-quality water.",
+        "4. First crops: green manure (dhaincha) or salt-tolerant rice; later wheat/mustard.",
+        "5. Apply zinc sulphate about 25-40 kg/ha.",
+        "6. Use ammonium sulphate or split urea; hold back phosphorus where soil-test P is already high."
+      ],
+      "recommended_fertilizers": [
+        {"id": "gypsum", "role": "Core amendment (dose from soil-test gypsum requirement)"},
+        {"id": "pyrite", "role": "Alternative for calcareous sodic soils (advice-based)"},
+        {"id": "pressmud", "role": "Cheapens reclamation when used with reduced gypsum"},
+        {"id": "green_manure", "role": "Dhaincha for reclamation"},
+        {"id": "zinc_sulphate", "role": "Zinc 25-40 kg/ha during reclamation"},
+        {"id": "ammonium_sulphate", "role": "Better N source than urea on alkaline soil"},
+        {"id": "urea", "role": "Only in more split doses; high loss otherwise"},
+        {"id": "sop", "role": "If potash needed, avoid chloride in saline soil"},
+        {"id": "fym_compost", "role": "Organic matter"}
+      ],
+      "avoid_or_caution": ["Leaching saline-sodic soil with water but no gypsum (makes it more sodic)", "Heavy DAP/phosphorus where Olsen-P is already high", "Skipping the soil test"],
+      "suited_crops": ["dhaincha (green manure)", "salt-tolerant rice", "wheat (after reclamation)", "barley", "mustard", "berseem"]
+    }
+  ],
+
+  "region_hints": [
+    {"state": "Uttar Pradesh", "zone": "Western plains (Gautam Buddh Nagar, Ghaziabad, Meerut, Bulandshahr, Muzaffarnagar, Saharanpur)", "soil_ids": ["alluvial"], "notes": "Loam/sandy-loam alluvium; wheat-sugarcane-rice belt; watch potassium, zinc and sulphur; occasional sodic patches."},
+    {"state": "Uttar Pradesh", "zone": "Central and eastern plains (Lucknow, Raebareli, Sultanpur, Pratapgarh, Unnao, Varanasi, Gorakhpur, Ayodhya)", "soil_ids": ["alluvial", "saline_sodic"], "notes": "Alluvium with well-known usar/sodic belts in Raebareli, Sultanpur, Pratapgarh, Unnao; reclamation with gypsum widely practised."},
+    {"state": "Uttar Pradesh", "zone": "Bundelkhand (Jhansi, Banda, Hamirpur, Chitrakoot, Lalitpur, Jalaun, Mahoba)", "soil_ids": ["red", "black"], "notes": "Mixed red and black soils, rainfed and water-scarce; lower rainfed doses plus organic manure."},
+    {"state": "Uttar Pradesh", "zone": "Terai belt (Pilibhit, Lakhimpur Kheri, Bahraich, Shravasti, Balrampur)", "soil_ids": ["alluvial"], "notes": "Moist, heavier alluvium with higher organic matter; rice-wheat-sugarcane."},
+    {"state": "Punjab", "zone": "Plains", "soil_ids": ["alluvial", "saline_sodic"], "notes": "Loamy to sandy alluvium; zinc deficiency in rice, manganese in wheat after rice on sandy soils; south-west has saline/sodic patches."},
+    {"state": "Haryana", "zone": "Plains and south-west", "soil_ids": ["alluvial", "saline_sodic", "arid"], "notes": "Sodic belt near Karnal-Kaithal-Kurukshetra; sandy arid soils in Bhiwani and Mahendragarh."},
+    {"state": "Bihar", "zone": "Gangetic plains (North and South Bihar)", "soil_ids": ["alluvial", "saline_sodic"], "notes": "Calcareous alluvium (e.g. Samastipur, Muzaffarpur): zinc, sulphur and boron deficiency common; calcareous sodic patches."},
+    {"state": "West Bengal", "zone": "Gangetic delta, coast and western plateau", "soil_ids": ["alluvial", "laterite", "saline_sodic"], "notes": "Delta alluvium for rice/jute; coastal saline in Sundarbans; laterite in Bankura/Purulia/Birbhum."},
+    {"state": "Assam and Northeast", "zone": "Brahmaputra valley and hills", "soil_ids": ["alluvial", "mountain_forest", "laterite"], "notes": "Acidic soils; low-input rice doses are common (e.g. about 60:20:40 NPK for Sali rice) and lime helps."},
+    {"state": "Maharashtra", "zone": "Deccan plateau (Vidarbha, Marathwada, western Maharashtra) and Konkan", "soil_ids": ["black", "laterite", "red"], "notes": "Black soils for cotton, soybean, sugarcane, onion; Konkan laterite is acidic."},
+    {"state": "Madhya Pradesh", "zone": "Malwa and Narmada valley; eastern MP", "soil_ids": ["black", "red"], "notes": "Soybean-wheat-chickpea on black soils; eastern districts have red and yellow soils."},
+    {"state": "Gujarat", "zone": "Saurashtra, south, central-north, Kutch and coast", "soil_ids": ["black", "alluvial", "arid", "saline_sodic"], "notes": "Cotton/groundnut on black and medium black; saline coastal and Kutch soils."},
+    {"state": "Rajasthan", "zone": "West (Thar) and east/south-east", "soil_ids": ["arid", "alluvial", "black"], "notes": "Mustard, bajra, guar in arid zone; Hadoti (Kota-Baran-Jhalawar) has black soils."},
+    {"state": "Karnataka", "zone": "South/interior, north and coast/Malnad", "soil_ids": ["red", "black", "laterite"], "notes": "Ragi/groundnut on red soils; cotton/jowar/pulses on black soils in the north; acidic laterite near the coast."},
+    {"state": "Tamil Nadu", "zone": "Interior, Cauvery delta, western belt", "soil_ids": ["red", "black", "alluvial", "laterite"], "notes": "Delta alluvium for rice; red soils widespread; black soils in western and southern belts."},
+    {"state": "Andhra Pradesh", "zone": "Rayalaseema, coastal delta, Guntur-Krishna", "soil_ids": ["red", "black", "alluvial"], "notes": "Deltaic alluvium for rice; black cotton soils in Guntur/Krishna; red soils in Rayalaseema."},
+    {"state": "Telangana", "zone": "Plateau", "soil_ids": ["red", "black"], "notes": "Red chalka and black regur soils; cotton, rice, maize, soybean."},
+    {"state": "Odisha", "zone": "Coastal plains and uplands", "soil_ids": ["alluvial", "red", "laterite"], "notes": "Coastal deltaic alluvium; acidic red/laterite uplands."},
+    {"state": "Chhattisgarh and Jharkhand", "zone": "Plateau and plains", "soil_ids": ["red", "laterite"], "notes": "Red and yellow soils, acidic in places; rice-based systems - lime and organic manure help."},
+    {"state": "Kerala", "zone": "Midland, highland and coast", "soil_ids": ["laterite", "alluvial", "mountain_forest"], "notes": "Strongly acidic laterite; lime and organic manure are the first step."},
+    {"state": "Himachal Pradesh, Uttarakhand, Jammu & Kashmir", "zone": "Hills", "soil_ids": ["mountain_forest", "alluvial"], "notes": "Acidic hill soils for apple, potato, vegetables; Terai/valley areas are alluvial."}
+  ],
+
+  "crops": [
+    {
+      "id": "wheat", "name": "Wheat", "name_hi": "गेहूं", "season": "rabi", "confidence": "high",
+      "npk_kg_per_ha": {"N": [120, 150], "P2O5": [60, 60], "K2O": [40, 60]},
+      "extras": ["Zinc sulphate (21%) 25 kg/ha if zinc-deficient", "Sulphur about 20-30 kg S/ha on S-deficient soils (SSP/gypsum/NPS)"],
+      "split_schedule": "Half N + all P and K at sowing; rest N at first irrigation (crown root initiation, 20-25 days) and second at tillering/second irrigation.",
+      "notes": "150:60:40 is the commonly recommended dose for irrigated timely-sown wheat; late sowing: use the lower N (about 100-120). Site-specific trials in eastern UP found higher potash (up to 60-120 K2O) paid on K-poor soils - go by soil test."
+    },
+    {
+      "id": "rice", "name": "Rice (paddy)", "name_hi": "धान (चावल)", "season": "kharif", "confidence": "high",
+      "npk_kg_per_ha": {"N": [100, 120], "P2O5": [50, 60], "K2O": [40, 40]},
+      "extras": ["Zinc sulphate 25 kg/ha before transplanting in zinc-deficient soils", "Green manure (dhaincha) can save part of the N", "Low-input lowland (Assam Sali) can use about 60:20:40 - follow state recommendation"],
+      "split_schedule": "N in 3 splits: one-third basal, one-third at active tillering, one-third at panicle initiation. All P and K basal.",
+      "notes": "Basmati usually needs less N (about 100-120). Hybrid boro rice in Assam is recommended about 100:60:60."
+    },
+    {
+      "id": "maize", "name": "Maize", "name_hi": "मक्का", "season": "kharif / rabi / zaid", "confidence": "high",
+      "npk_kg_per_ha": {"N": [120, 150], "P2O5": [60, 75], "K2O": [40, 50]},
+      "extras": ["Zinc sulphate 25 kg/ha on zinc-deficient soils"],
+      "split_schedule": "N in 3 splits: basal, knee-high stage, pre-tasselling. P and K basal.",
+      "notes": "Soil-test based 120:60:40 is a standard recommendation for maize-wheat systems."
+    },
+    {
+      "id": "sugarcane", "name": "Sugarcane", "name_hi": "गन्ना", "season": "annual (spring/autumn planting)", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [150, 180], "P2O5": [60, 80], "K2O": [60, 60]},
+      "extras": ["Sulphur and zinc where deficient", "Press mud / FYM 10 t/ha helps"],
+      "split_schedule": "N in 2-3 splits during early growth/tillering; avoid late N. Ratoon crops need more N than plant crop.",
+      "notes": "Follow the state sugarcane department / mill-zone recommendation which varies by state."
+    },
+    {
+      "id": "mustard", "name": "Mustard / rapeseed", "name_hi": "सरसों", "season": "rabi", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [60, 80], "P2O5": [30, 40], "K2O": [20, 40]},
+      "extras": ["Sulphur 30-40 kg S/ha is crucial (use SSP, NPS, ammonium sulphate or gypsum)", "Borax on boron-deficient soils"],
+      "split_schedule": "Half N + all P, K and S at sowing; rest N at first irrigation (about 25-30 days).",
+      "notes": "Rainfed mustard needs only about 40:20:0 plus sulphur."
+    },
+    {
+      "id": "potato", "name": "Potato", "name_hi": "आलू", "season": "rabi", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [150, 180], "P2O5": [60, 80], "K2O": [100, 120]},
+      "extras": ["FYM 20-25 t/ha", "Prefer SOP for chloride-sensitive/high-quality tubers"],
+      "split_schedule": "Half N + all P and K at planting; remaining N at earthing-up (25-30 days).",
+      "notes": "High potash improves tuber size and storage."
+    },
+    {
+      "id": "chickpea", "name": "Chickpea (gram)", "name_hi": "चना", "season": "rabi", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [20, 20], "P2O5": [40, 50], "K2O": [20, 20]},
+      "extras": ["Rhizobium + PSB seed treatment", "Sulphur 20 kg S/ha on S-poor soils", "Zinc if deficient"],
+      "split_schedule": "All basal (starter N only).",
+      "notes": "Legume - do not over-apply nitrogen."
+    },
+    {
+      "id": "lentil", "name": "Lentil (masoor)", "name_hi": "मसूर", "season": "rabi", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [20, 20], "P2O5": [40, 40], "K2O": [20, 20]},
+      "extras": ["Rhizobium + PSB seed treatment", "Sulphur where needed"],
+      "split_schedule": "All basal.",
+      "notes": "Legume - starter N only."
+    },
+    {
+      "id": "pea", "name": "Field pea / garden pea", "name_hi": "मटर", "season": "rabi", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [20, 25], "P2O5": [40, 60], "K2O": [20, 40]},
+      "extras": ["Rhizobium + PSB seed treatment"],
+      "split_schedule": "All basal.",
+      "notes": "Garden pea for vegetable uses the higher P and K."
+    },
+    {
+      "id": "soybean", "name": "Soybean", "name_hi": "सोयाबीन", "season": "kharif", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [20, 30], "P2O5": [60, 80], "K2O": [40, 40]},
+      "extras": ["Rhizobium + PSB seed treatment", "Sulphur 20-30 kg S/ha (SSP/gypsum/NPS)", "Zinc on black soils"],
+      "split_schedule": "All basal.",
+      "notes": "Responds strongly to phosphorus and sulphur."
+    },
+    {
+      "id": "cotton", "name": "Cotton (irrigated Bt hybrid)", "name_hi": "कपास", "season": "kharif", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [120, 150], "P2O5": [50, 75], "K2O": [50, 75]},
+      "extras": ["Zinc and magnesium on deficient soils", "Water-soluble NPK through drip where available"],
+      "split_schedule": "N in 3-4 splits (sowing, square formation, flowering, boll development); P at sowing; K split.",
+      "notes": "Rainfed cotton on black soils needs lower doses - follow state recommendation."
+    },
+    {
+      "id": "groundnut", "name": "Groundnut", "name_hi": "मूंगफली", "season": "kharif / summer", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [20, 25], "P2O5": [40, 50], "K2O": [40, 50]},
+      "extras": ["Gypsum 250-500 kg/ha at pegging/flowering for calcium and sulphur", "Rhizobium + PSB seed treatment"],
+      "split_schedule": "Basal NPK; gypsum at 30-45 days.",
+      "notes": "Light red/sandy soils respond to potash and gypsum."
+    },
+    {
+      "id": "pearl_millet", "name": "Pearl millet (bajra)", "name_hi": "बाजरा", "season": "kharif", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [40, 80], "P2O5": [20, 40], "K2O": [0, 20]},
+      "extras": ["FYM on sandy soils"],
+      "split_schedule": "Half N + all P basal; rest N at about 30 days when soil is moist.",
+      "notes": "Use the lower dose for rainfed fields and the higher for irrigated hybrids."
+    },
+    {
+      "id": "sorghum", "name": "Sorghum (jowar)", "name_hi": "ज्वार", "season": "kharif / rabi", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [40, 100], "P2O5": [20, 40], "K2O": [0, 40]},
+      "extras": ["Zinc/iron on black soils if deficient"],
+      "split_schedule": "Half N + P at sowing; rest N at 30-35 days.",
+      "notes": "Rainfed about 40:20:0; irrigated hybrid up to 80-100 N."
+    },
+    {
+      "id": "pigeonpea", "name": "Pigeonpea (arhar / tur)", "name_hi": "अरहर", "season": "kharif", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [20, 20], "P2O5": [40, 50], "K2O": [20, 20]},
+      "extras": ["Rhizobium + PSB seed treatment", "Sulphur 20 kg S/ha"],
+      "split_schedule": "All basal.",
+      "notes": "Legume - starter N only."
+    },
+    {
+      "id": "tomato", "name": "Tomato", "name_hi": "टमाटर", "season": "all (protected/open)", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [120, 150], "P2O5": [60, 80], "K2O": [60, 80]},
+      "extras": ["FYM 20-25 t/ha", "Calcium and boron for fruit set / blossom-end rot", "Water-soluble NPK through drip"],
+      "split_schedule": "Basal P, K and part N; remaining N in 3-4 splits at 20-day gaps; more potash at fruiting.",
+      "notes": "Even moisture reduces blossom-end rot and cracking."
+    },
+    {
+      "id": "onion", "name": "Onion", "name_hi": "प्याज", "season": "rabi / kharif", "confidence": "medium",
+      "npk_kg_per_ha": {"N": [100, 100], "P2O5": [50, 50], "K2O": [50, 50]},
+      "extras": ["Sulphur 30-40 kg S/ha (improves pungency and storage)"],
+      "split_schedule": "Half N + all P and K basal; remaining N in two splits up to about 45 days; no N after bulb initiation.",
+      "notes": "Late N makes bulbs store poorly."
+    }
+  ],
+
+  "low_resource_playbook": {
+    "idea": "When money, water or inputs are limited, protect yield per rupee instead of chasing maximum yield.",
+    "priority_order": [
+      "1. Get a soil test / Soil Health Card (often free) - it removes guesswork and saves fertilizer.",
+      "2. Fix the cheapest big limiter first: zinc sulphate (cheap, big response in rice/wheat/maize) and sulphur (SSP/gypsum) for oilseeds and pulses.",
+      "3. Put phosphorus in the seed furrow (placement) instead of broadcasting - same crop with less DAP.",
+      "4. Split urea in 2-3 small doses on moist soil; avoid applying before heavy rain.",
+      "5. Add FYM/compost, crop residue or green manure (dhaincha) to cut fertilizer need over time.",
+      "6. Use legumes in rotation with Rhizobium/PSB seed treatment (nitrogen from air).",
+      "7. Consider Nano Urea sprays to replace part of the top-dress urea - never the basal dose.",
+      "8. Match the dose to water: rainfed fields need lower N and P; do not apply the irrigated dose without irrigation."
+    ],
+    "crop_choice_hint": "In dry or low-input conditions prefer lower-nutrient crops (bajra, sorghum, pulses, mustard, chickpea) and legumes; compare expected profit using current mandi prices before suggesting a crop."
+  }
+}
